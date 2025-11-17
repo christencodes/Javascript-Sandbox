@@ -1,159 +1,242 @@
-`use strict `;
+// const shoppingList = document.querySelector(".shopping-list");
 
-//Arrays------------------------------------
-// //Array Add Methods
-// const testArray = ["Joe", 1, true, 25.5];
+// //I need to gather all the lis in the shoppingList
+// const items = shoppingList.getElementsByTagName("li");
+// console.log(items);
 
-// //pushes parameter to the end
-// testArray.push(9);
-// //returns the amount of elements in the array
-// console.log(testArray.push(10));
+// //this creates a HTML collection that can be looped overconsole.log(items);
 
-// //pushes parameter to the start
-// testArray.unshift("a");
-// //returns the amount of elements in the array
-// console.log(testArray.unshift("b"));
+// //loop over the element and change the background based on index
 
-// //Array Remove Methods
+// //test
 
-// //removes the last element from the array
-// console.log(testArray.pop());
-// //returns the element removed
-// console.log(testArray);
+// const colorGreen = "hsl(120, 100%, 50%)";
+// const colorBlue = "hsl(238, 100%, 50%)";
 
-// //removes the first element from the array
-// console.log(testArray.shift());
-// //returns the element removed
-// console.log(testArray);
+// //this works!
+// // items[0].style.backgroundColor = colorBlue;
 
-// //returns the index of an element if it's in the array
-// console.log(testArray.indexOf("a"));
-// console.log(testArray.indexOf(true));
+// //iterate over array of li
 
-// //returns falsey value if element not in array
-// //this returns -1
-// console.log(testArray.indexOf("nothing"));
+// for (reps = items.length - 1; reps >= 0; reps -= 1) {
+//   if (reps % 2 == 0) {
+//     items[reps].style.backgroundColor = colorBlue;
+//   } else {
+//     items[reps].style.backgroundColor = colorGreen;
+//   }
+// }
 
-// //returns true or false if element is in array or not
-// //this is true
-// console.log(testArray.includes("a"));
-// //this is false
-// console.log(testArray.includes("nothing"));
-
-//Objects------------------------------------
-
-//Objects are similar to arrays, but unlike arrays they contain key-value pairs also referred to as properties
-// const person = {
-//   firstName: "Jason",
-//   lastName: "Johnson",
-//   birthYear: 1991,
-//   hasDriversLicense: true,
+// const calcTip = function (bill) {
+//   return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
 // };
 
-// //values can be accessed by bracket or "." (dot notation)
+// /* Write your code below. Good luck! 🙂 */
 
-// //bracket notation
-// //note - when using bracket notation, a string must be placed inside the brackets
-// console.log(person["birthYear"]);
-// //expressions are inserted into the brackets
-// console.log(person["birth" + "Y" + "ear"]);
+// const calcAverage = function (arr) {
+//   let currentTotal = 0;
+//   for (let reps = 1; reps <= arr.length - 1; reps++) {
+//     currentTotal += arr[reps];
+//   }
 
-// //dot notation
-// console.log(person.firstName);
-
-// //Properties can be added to objects
-
-// //This adds a property to the person object with a key of friends and an array as the value;
-// person.friends = ["Timothy", "John", "Angela"];
-// console.log(person);
-
-// //Objects can also have methods
-
-// //test: can I add a function to an object?
-// //result: a function can be added to an object after it's been declared
-
-// //the this keyword points to the object itself
-// person.calcAge = function () {
-//   return 2025 - this.birthYear;
+//   return currentTotal / arr.length;
 // };
 
-// console.log(person);
-// console.log(person.calcAge());
+// const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
 
-// //an example of this in action
+// const tips = [];
+// const totals = [];
 
-// person.currentName = function () {
-//   return this.firstName + " " + this.lastName;
+// for (let reps = 0; reps <= bills.length - 1; reps++) {
+//   tips.push(calcTip(bills[reps]));
+//   totals.push(tips[reps] + bill[reps]);
+// }
+
+// calcAverage(totals);
+
+//JSON
+//JSON.parse(jsonString) - json string to javascript object
+//deserialization
+
+//JSON.stringify(jsValue) - javascript to jason
+//serialization
+
+//the fetch api is asynchronous
+//we need 'async' before the function
+//we need 'await' before any ansynchronous functions
+
+/*
+ 1. Place url in variable
+ 2. Create new Request Object with url
+ 3. Create response using fetch(request)
+ 4. Place the response.json() in a variable
+ 5. The variable now holds the JSON string as a JS Object or array
+ */
+
+//this function obtains the json and places it in a variable
+// const populate = async () => {
+//   //we are placing the request url in a const
+//   const requestURL =
+//     "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
+
+//   //creating a new request object with the url as a argument
+//   const request = new Request(requestURL);
+
+//   //making a network request with a response object
+//   const response = await fetch(request);
+//   //converts the response into a js object - this is if it responds well...
+//   const superHeroesText = await response.text();
+
+//   const superHeroes = JSON.parse(superHeroesText);
+//   //this prints out a js object with a type of object
+//   console.log(superHeroes, typeof superHeroes);
+//   console.log("--------------");
+
+//   populateHeader(superHeroes);
+//   populateSection(superHeroes);
 // };
 
-// person.currentPerson = function () {
-//   return this;
-// };
+// //function to populate the header via the obj from populate!
+// function populateHeader(obj) {
+//   //placing header element inside const
+//   const header = document.querySelector("header");
+//   //creating an h1 that will be added to the header
+//   const myH1 = document.createElement("h1");
+//   //updating the created h1's text content with the squadName
+//   myH1.textContent = obj.squadName;
+//   //appending the h1 to the header
+//   header.appendChild(myH1);
 
-// console.log(person);
-// console.log(person.currentName());
+//   //---------------
+//   //Creating Paragraph
+//   const myPara = document.createElement("p");
+//   //updating myPara's text content with obj data
+//   //obj.hometown is the heroes hometown
+//   //obj.formed is when the superhero team was formed
+//   myPara.textContent = `Hometown: ${obj.homeTown} // Formed: ${obj.formed}`;
+//   //append myPara to the header
+//   header.appendChild(myPara);
+//   header.style.marginBottom = "20px";
+//   header.appendChild(document.createElement("hr"));
+// }
 
-// //returning this
-// //this returns the object
-// //this points to the object!
-// console.log(person.currentPerson());
+// function populateSection(obj) {
+//   //select the section
+//   const section = document.querySelector("section");
+//   //place the members array into the const heroes
+//   const heroes = obj.members;
 
-// //Challenge
-// //lets return the summary "Jason is a 34-year old teacher, and he has a driver's license"
+//   //iterate over the heroes and create an article for each one
+//   for (hero of heroes) {
+//     //create article
+//     const heroArticle = document.createElement("article");
 
-// person.summaryOf = function () {
-//   return `${this.firstName} is a ${this.calcAge()}-year old teacher, and he ${
-//     this.hasDriversLicense ? "has" : "does not have"
-//   } a driver's license! `;
-// };
+//     //create h2 ; 3 paragraphs ; 1 unordered list
+//     const heroH2 = document.createElement("h2");
+//     const heroParagraph1 = document.createElement("p");
+//     const heroParagraph2 = document.createElement("p");
+//     const heroParagraph3 = document.createElement("p");
+//     const heroPowersList = document.createElement("ul");
 
-// console.log(person.summaryOf());
+//     //h2 : hero name
+//     //p1 : secret identity
+//     //p2 : hero age
+//     //p3 : Super powers
 
-//lecture challenge
-const mark = {
-  fullName: "Mark Miller",
-  mass: 78,
-  height: 1.69,
+//     heroH2.textContent = hero.name;
+//     heroParagraph1.textContent = `Secret Identity: ${hero.secretIdentity}`;
+//     heroParagraph2.textContent = `Age: ${hero.age}`;
+//     heroParagraph3.textContent = "Superpowers";
 
-  calcBMI: function () {
-    mark.bmi = this.mass / (this.height * this.height);
-    return mark.bmi;
-  },
+//     //create const to hold powers array
+//     const superPowers = hero.powers;
+//     //iterate over array and place powers in list items
+//     //append li to heroPowersList
+//     for (power of superPowers) {
+//       const heroListItem = document.createElement("li");
+//       // console.log(superPowers[`${power}`]);
+//       heroListItem.textContent = power;
+//       heroPowersList.appendChild(heroListItem);
+//     }
+
+//     //append everything to the article
+//     heroArticle.appendChild(heroH2);
+//     heroArticle.appendChild(heroParagraph1);
+//     heroArticle.appendChild(heroParagraph2);
+//     heroArticle.appendChild(heroParagraph3);
+//     heroArticle.appendChild(heroPowersList);
+//     heroArticle.appendChild(document.createElement("hr"));
+//     heroArticle.style.marginBottom = "15px";
+
+//     section.appendChild(heroArticle);
+//   }
+// }
+
+// populate();
+
+//acces json data and put it in the page
+
+const populate = async () => {
+  // https://github.com/mdn/learning-area/blob/main/javascript/oojs/tasks/json/sample.json
+
+  const catsURL = "cats.json";
+
+  //create a request object with url
+  const request = new Request(catsURL);
+  // place the request in a response
+  const response = await fetch(request);
+  //response into text
+  responseText = await response.text();
+  const catsInfo = JSON.parse(responseText);
+
+  // console.log(catsInfo, typeof catsInfo);
+  // // console.log(catsInfo[0]);
+
+  displayCatInfo(catsInfo);
 };
 
-const john = {
-  fullName: "John Smith",
-  mass: 92,
-  height: 1.95,
+function displayCatInfo(obj) {
+  //append everything into this article
+  //create article that will be appended to the section
 
-  calcBMI: function () {
-    john.bmi = this.mass / (this.height * this.height);
-    return john.bmi;
-  },
+  //grab the section
+  const section = document.querySelector("section");
 
-  summaryOf: function () {
-    console.log(this);
-  },
-};
+  const motherCats = obj;
 
-const higherBMI = (markBMI, johnBMI) => {
-  if (markBMI > johnBMI) {
-    console.log(
-      `${mark.fullName}'s BMI (${mark.bmi}) is higher than ${
-        john.fullName
-      }'s (${john.calcBMI()})!`
-    );
-  } else if (johnBMI > markBMI) {
-    console.log(
-      `${john.fullName}'s BMI (${john.bmi}) is higher than ${
-        mark.fullName
-      }'s (${mark.calcBMI()})!`
-    );
-  } else {
-    console.log("Nobody wins!");
+  for (mothers of motherCats) {
+    const catArticle = document.createElement("article");
+    const motherCatH2 = document.createElement("h2");
+    const catBreed = document.createElement("p");
+    const catColor = document.createElement("p");
+    const kittenHeading = document.createElement("h3");
+    const catKittenList = document.createElement("ol");
+
+    motherCatH2.textContent = mothers.name;
+    catBreed.textContent = mothers.breed;
+    catColor.textContent = mothers.color;
+    kittenHeading.textContent = "Kittens:";
+
+    const kittens = mothers.kittens;
+    for (kitten of kittens) {
+      const kittenListItem = document.createElement("li");
+      kittenListItem.textContent = `Name: ${kitten.name} \\ Gender: ${kitten.gender}`;
+      catKittenList.appendChild(kittenListItem);
+    }
+
+    //append everything to the article
+    catArticle.appendChild(motherCatH2);
+    catArticle.appendChild(catBreed);
+    catArticle.appendChild(catColor);
+    catArticle.appendChild(kittenHeading);
+    catArticle.appendChild(catKittenList);
+    catArticle.style.marginBottom = "20px";
+    catArticle.appendChild(document.createElement("hr"));
+    ///append article to section
+    section.appendChild(catArticle);
   }
-};
 
-higherBMI(mark.calcBMI(), john.calcBMI());
+  //total number of kittens
+  //how many kittens are male and female
+}
 
-john.summaryOf();
+populate();

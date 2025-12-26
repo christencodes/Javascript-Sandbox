@@ -733,3 +733,149 @@
 // } = state;
 
 // console.log(user, remaingState);
+
+//spread = expands an array into seperate elements
+// let numbers = [1, 2, 3, 4, 5];
+// // console.log(numbers);
+
+// function addNumbers(a, b, c, d) {
+//   return a + b + c + d;
+// }
+
+// console.log(addNumbers(...numbers));
+
+//rest = bundles seperate elements into an array /
+// allow a function to work with a variable number of arguments by bundling them into an array
+
+//rest - packs values into arrays
+//spread - unpacks arrays into values
+
+// const sumNumbers = function (...numbers) {
+//   let value = 0;
+//   numbers.forEach((element) => {
+//     value += element;
+//   });
+//   return value;
+// };
+
+// console.log(sumNumbers(1, 2, 10, 50));
+
+// const avgNumbers = function (...numbers) {
+//   let total = 0;
+//   numbers.forEach((e) => {
+//     total += e;
+//   });
+
+//   return total / numbers.length;
+// };
+
+// console.log(avgNumbers(2, 4, 4, 10));
+
+// const combineStrings = function (...strings) {
+//   let currentString = "";
+//   strings.forEach((e) => {
+//     currentString += e;
+//   });
+
+//   return currentString;
+// };
+
+// console.log(combineStrings("i like ", "apples"));
+
+//1 The basics : array merging
+
+// const produce = ["Apples", "Bananas"];
+// const dairy = ["Cheese", "Yogurt"];
+
+// const oldGroceries = ["Milk", ...produce, ...dairy];
+
+// console.log(...oldGroceries);
+
+//2. Shallow Copying and Updates
+
+// const user = {
+//   id: 101,
+//   username: "js_wizard",
+//   email: "old@example.com",
+// };
+
+// function updateEmail(user, newEmail) {
+//   const newUser = { ...user, email: newEmail };
+//   //if an object has two keys defined that are the same, it uses the last defined key
+//   return newUser;
+// }
+
+// console.log(updateEmail(user, "super@chris.com"));
+
+//Handling Nested Data
+
+// const gameState = {
+//   player: "Alex",
+//   level: 5,
+//   stats: {
+//     score: 85,
+//     health: 100,
+//   },
+// };
+
+// function updateState(state) {
+//   return { ...gameState, ...state };
+// }
+
+// console.log(updateState({ stats: { score: 100, health: 100 } }));
+
+//we want to update luck in a function
+// const userState = {
+//   maxHealth: 100,
+//   level: 67,
+//   stats: {
+//     agi: 5,
+//     dex: 60,
+//     luk: 20,
+//   },
+// };
+// function updateUserStats(state) {
+//   const newUserStats = { ...userState, ...state };
+//   const newStats = { ...userState.stats, ...state.stats };
+
+//   newUserStats.stats = newStats;
+
+//   return newUserStats;
+// }
+
+// console.log(updateUserStats({ stats: { luk: 30 } }));
+
+// const tempObj = {
+//   a: 90,
+//   b: 80,
+//   c: 80,
+// };
+
+// //we want to update c
+
+// function updateTempObj(newTemp) {
+//   const newObj = { ...tempObj, ...newTemp };
+//   return newObj;
+// }
+
+// console.log(updateTempObj({ c: 70, d: 60 }));
+
+//4 String Manipulation and De-duplication
+
+//5. The "rest" vs. "spread" challenge
+
+const person = {
+  name: "Sarah",
+  age: 30,
+  city: "New York",
+  occupation: "Engineer",
+};
+
+function summarizeUser(obj) {
+  const { name: userName, ...userMetadata } = obj;
+  return [userName, userMetadata];
+}
+
+const [userName, metadata] = summarizeUser(person);
+console.log(userName);
+console.log(metadata);

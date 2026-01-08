@@ -864,18 +864,268 @@
 
 //5. The "rest" vs. "spread" challenge
 
-const person = {
-  name: "Sarah",
-  age: 30,
-  city: "New York",
-  occupation: "Engineer",
-};
+// const person = {
+//   name: "Sarah",
+//   age: 30,
+//   city: "New York",
+//   occupation: "Engineer",
+// };
 
-function summarizeUser(obj) {
-  const { name: userName, ...userMetadata } = obj;
-  return [userName, userMetadata];
-}
+// function summarizeUser(obj) {
+//   const { name: userName, ...userMetadata } = obj;
+//   return [userName, userMetadata];
+// }
 
-const [userName, metadata] = summarizeUser(person);
-console.log(userName);
-console.log(metadata);
+// const [userName, metadata] = summarizeUser(person);
+// console.log(userName);
+// console.log(metadata);
+
+//* Logical Assignments -----------------------------
+
+//? OR '||=' Will assign the value on the right hand side if the variable doesn't have a value (something like that)
+//* If the value is 'falsey' it will asign the new value on the right checks for falsey*?
+//* Simplified - assigns value to variable if falsey
+
+//! Really good if the variable has no value (I think)
+
+// const person = {
+//   name: "Chris",
+//   age: 34,
+//   birthYear: 0,
+// };
+
+//!person.birthYear is 0 , which is falsey, the result is 2039
+// person.birthYear ||= 2039;
+
+//? Nullish (??=) Checks to see if that variable is null or undefined and, if so, assigns the value on the right
+//* If the value is (null or undefined)
+//* Simplified - assigns value to variable if null or undefined
+
+//! person.birthYear is not null or undefined so it results to 0
+// person.birthYear ??= 1000;
+// person.pet ??= true;
+// console.log(person.birthYear);
+// console.log(person.pet);
+
+//? AND (&&=) - Checks to see if the variable is truthy and assigns it the value on the right
+//* Simplified - assigns value to variable if truthy
+
+// const person2 = {
+//   name: "Justin Timberlake",
+//   password: 1234,
+// };
+
+//! Assigns "<NONE-OF-YOUR-BUSINESS>" because password is truthy
+// person2.password &&= "<NONE-OF-YOUR-BUSINESS>";
+// console.log(person2.password);
+
+//? (||=) - if falsy ; (??=) - if undefined or null ; (&&=) if truthy
+// ! Exercises
+// 1.
+//If user name is falsy, assign "Guest"
+
+//("") is falsy
+// let username = "";
+
+// username ||= "Guest";
+// console.log(username);
+
+//2.
+//If snowing is true, set theme to "winter"
+
+// let snowing = true;
+
+// snowing &&= "winter";
+// console.log(snowing);
+
+//3.
+//Only assign volume to 50 if it is null or undefined
+// let volume = null;
+
+// volume ??= 50;
+// console.log(volume);
+
+//4.
+//assign north pole only if location is falsy
+
+// let location1 = 0;
+// location1 ||= "North Pole";
+// console.log(location1);
+
+//5.
+//Only keep "admin" if isElf is true
+// let isElf = false;
+// let accessLevel = "admin";
+
+// isElf &&= accessLevel;
+// console.log(isElf);
+
+//6.
+//Assign maxGifts to 10 only if it is null or undefined
+// let maxGifts;
+// maxGifts ??= 10;
+// console.log(maxGifts);
+
+//7.
+//Ensure settings.volume exists
+//default volume should be 5
+
+// const settings = {
+//   theme: "dark",
+// };
+
+// settings.volume ??= 5;
+// console.log(settings.volume);
+// console.log(settings);
+
+//8.
+//if holidayMode is true, enable specialMusic
+
+// let holidayMode = true;
+// let specialMusic = false;
+
+// specialMusic &&= holidayMode;
+// console.log(specialMusic);
+// // console.log(holidayMode);
+
+// !Strings
+// //split method
+// // * takes a string and places it into an array based on a pattern
+// const str = "- Item A\n- Item B";
+
+// const words = str.split("\n");
+// console.log(words);
+
+// const str2 = "- Item A";
+// const str3 = str2.substring(2);
+// console.log(str3);
+
+// words.forEach((e) => {
+//   console.log(e.substring(2));
+// });
+
+// const fruit = "apple".slice(2);
+// console.log(fruit);
+
+// let arr = [1, 2, 3, 4, 5];
+
+// console.log(arr.slice(2));
+
+//* ON stream
+
+//LOGICAL ASSIGNMENT OPERATORS
+
+//* (||=) assign the right value if the left is falsy
+// let x = 0;
+// x ||= "APPLES!";
+// console.log(x);
+//? (??=) assign the right value if the left is null or undefined
+// let x = null;
+// x ??= "ORANGES!";
+// console.log(x);
+//! (&&=) assign the right value if the left value is truthy
+// let password = "verysecretpassword";
+// password &&= "<NON OF YO DAMN BUSINESS!>";
+// console.log(password);
+
+//1.
+//if user is falsy, assign "Guest";
+// let username = "";
+// username ||= "Guest";
+// console.log(username);
+
+//2.
+//if snowing is true, set theme to winter
+// let snowing = true;
+// let theme = snowing ? "winter" : "default";
+// console.log(theme);
+
+//3.
+//only assign volume to 50 if it is null or undefined
+// let volume = null;
+// volume ??= 50;
+// console.log(volume);
+
+//4.
+//Assign 'North Pole' only if location is falsy
+// let location1 = 0;
+// location1 ||= "North Pole";
+// console.log(location1);
+
+//2. (corrected)
+//only allow snow mode if it is actually snowing
+// let snowing2 = true;
+// let snowModeEnabled = true;
+
+// snowModeEnabled &&= snowing2;
+
+//5.
+//Only keep 'admin' if isElf is true
+// let isElf = false;
+// let accessLevel = "admin";
+
+// accessLevel &&= isElf;
+
+//1.
+// let userRole = "";
+// userRole ||= "guest";
+// console.log(userRole);
+
+//2.
+// let settings = {
+//   theme: null,
+// };
+// settings.theme ??= "light";
+// settings.color ??= "blue";
+// console.log(settings.color);
+
+//3.
+//! Come back to this
+// let msg = "Hello";
+// let isAuthenticated = true;
+
+// msg = isAuthenticated &&= "Welcome Back";
+// console.log(is);
+// console.log(msg);
+
+//4.
+//we would use the nullish assignment
+// const gameTracker = {
+//   player: "Tim",
+//   currentScore: 0,
+// };
+// gameTracker.currentScore ??= 10;
+// console.log(gameTracker.currentScore);
+
+//5.
+// let options = {
+//   debug: "verbose",
+//   retries: null,
+// };
+
+// options.debug &&= true;
+// options.retries ??= 5;
+// console.log(options.debug, options.retries);
+
+//6.
+// const demoConfig = {};
+// function setupConfig(config) {
+//   config.timeout ??= 3000;
+//   config.active &&= "active";
+//   config.title ||= "untitled";
+
+//   return config;
+// }
+
+// let newConfig = setupConfig(demoConfig);
+// console.log(newConfig);
+
+//7.
+//! come back
+// let user = {
+//   userName: "coder123",
+//   online: true,
+//   lastSeen: "2023-01-01",
+// };
+
+// user.lastSeen = user.online &&= Date.now();

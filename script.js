@@ -1129,3 +1129,406 @@
 // };
 
 // user.lastSeen = user.online &&= Date.now();
+
+// Temperature Trend Tracker
+// -- array of temps
+// return a string describing the trend
+
+// function tempTrendTracker(arr) {
+//   if (arr.length <= 1) return "Getting Hotter";
+
+//   let hotter = true;
+//   let colder = true;
+//   let steady = true;
+
+//   for (let i = 0; i < arr.length - 1; i++) {
+//     hotter &&= arr[i] < arr[i + 1];
+//     colder &&= arr[i] > arr[i + 1];
+//     steady &&= arr[i] === arr[i + 1];
+//   }
+
+//   // console.log(hotter, colder);
+
+//   if (hotter) return "Getting Hotter";
+//   if (colder) return "Getting Colder";
+//   if (steady) return "Steady";
+//   return " Variable";
+// }
+
+// const temps1 = [10, 9, 8, 7, 6, 5];
+// const temps2 = [5, 6, 7, 8, 9, 10];
+// const temps3 = [10, 7, 11, 13, 14];
+// const temps4 = [1, 1, 1, 1, 1, 1];
+
+//[0,1,2,3,4,5].length // 6
+//arr[6] - out of bounds
+//arr[5] - in bounds and the last element
+//i < arr.length
+
+// console.log(tempTrendTracker(temps4));
+
+// const userNames = ["chris", "taylor", "jonas", "Antz", "Daniel"];
+
+// for (let i = 0; i < userNames.length; i++) {
+//   console.log(`${i} : ${userNames[i]}`);
+// }
+
+// console.log(userNames.length);
+
+//[1,2,4,3,5]
+
+const inventors = [
+  { first: "Albert", last: "Einstein", year: 1879, passed: 1955 },
+  { first: "Isaac", last: "Newton", year: 1643, passed: 1727 },
+  { first: "Galileo", last: "Galilei", year: 1564, passed: 1642 },
+  { first: "Marie", last: "Curie", year: 1867, passed: 1934 },
+  { first: "Johannes", last: "Kepler", year: 1571, passed: 1630 },
+  { first: "Nicolaus", last: "Copernicus", year: 1473, passed: 1543 },
+  { first: "Max", last: "Planck", year: 1858, passed: 1947 },
+  { first: "Katherine", last: "Blodgett", year: 1898, passed: 1979 },
+  { first: "Ada", last: "Lovelace", year: 1815, passed: 1852 },
+  { first: "Sarah E.", last: "Goode", year: 1855, passed: 1905 },
+  { first: "Lise", last: "Meitner", year: 1878, passed: 1968 },
+  { first: "Hanna", last: "Hammarström", year: 1829, passed: 1909 },
+];
+
+const people = [
+  "Bernhard, Sandra",
+  "Bethea, Erin",
+  "Becker, Carl",
+  "Bentsen, Lloyd",
+  "Beckett, Samuel",
+  "Blake, William",
+  "Berger, Ric",
+  "Beddoes, Mick",
+  "Beethoven, Ludwig",
+  "Belloc, Hilaire",
+  "Begin, Menachem",
+  "Bellow, Saul",
+  "Benchley, Robert",
+  "Blair, Robert",
+  "Benenson, Peter",
+  "Benjamin, Walter",
+  "Berlin, Irving",
+  "Benn, Tony",
+  "Benson, Leana",
+  "Bent, Silas",
+  "Berle, Milton",
+  "Berry, Halle",
+  "Biko, Steve",
+  "Beck, Glenn",
+  "Bergman, Ingmar",
+  "Black, Elk",
+  "Berio, Luciano",
+  "Berne, Eric",
+  "Berra, Yogi",
+  "Berry, Wendell",
+  "Bevan, Aneurin",
+  "Ben-Gurion, David",
+  "Bevel, Ken",
+  "Biden, Joseph",
+  "Bennington, Chester",
+  "Bierce, Ambrose",
+  "Billings, Josh",
+  "Birrell, Augustine",
+  "Blair, Tony",
+  "Beecher, Henry",
+  "Biondo, Frank",
+];
+
+//* filter()
+/* Returns an Array */
+
+//array.prototype.filter()
+//1. filter the list of inventors for those who were born in the 1500's
+//filter will return an array of elements that return true if conditions were met
+// const fifteen = inventors.filter((inventor) => {
+//   let x;
+//   inventor.year >= 1500 && inventor.year < 1600 ? (x = true) : (x = false);
+//   return x;
+// });
+
+//array.prototype.map()
+//2. Map
+//contains an array of elements resulting from a function called on every element in that array
+
+// const inventorsNames = inventors.map((e) => {
+//   return `${e.first} ${e.last}`;
+// });
+
+// console.table(inventorsNames);
+
+//array.protoype.sort()
+//3. Sort
+//compares elements and sorts them in ascending or descending order based on conditions? _check this
+//sort the inventors by birthdate
+
+// const whoseOlder = inventors.sort((a, b) => {
+//   if (a.year > b.year) {
+//     return 1;
+//   } else {
+//     return -1;
+//   }
+// });
+
+// const whoseOlder = inventors.sort((a, b) => (a.year > b.year ? -1 : 1));
+
+// console.table(whoseOlder);
+
+// const prices = [10.5, 20, 35.99, 40];
+
+// const newPrices = prices.map((e) => `$${e.toFixed(2)}`);
+// console.table(newPrices);
+
+// const names = ["Zelda", "Mario", "Peach", "Link"];
+
+// const newNames = names.toSorted();
+// console.log(newNames);
+// console.log(names);
+
+// const dailySteps = [5000, 8000, 12000, 4000];
+
+// const totalSteps = dailySteps.reduce((total, nextStep) => total + nextStep);
+
+// console.log(totalSteps);
+
+// const users = [
+//   { name: "Alice", age: 25 },
+//   { name: "Bob", age: 30 },
+//   { name: "Charlie", age: 20 },
+// ];
+
+// const sortedNames = users.map((e) => e.name).sort();
+// console.log(sortedNames);
+
+// const numberList = [1, 10, 100, 25, 5];
+
+// const orderedNumberList = numberList.sort((first, second) => {
+//   if (first > second) {
+//     return 1;
+//   } else {
+//     return -1;
+//   }
+// });
+
+// console.log(orderedNumberList);
+
+// const fruits = ["apple", "banana", "apple", "orange", "banana", "apple"];
+
+// const countFruit = {
+//   apple: 0,
+//   banana: 0,
+//   orange: 0,
+//   gatherFruit(a, b) {
+//     if (a === null || a === undefined) {
+//       countFruit[b]++;
+//     } else {
+//       console.log(typeof a);
+//       countFruit[a]++;
+//       countFruit[b]++;
+//     }
+//   },
+// };
+
+// const totalFruitCount = fruits.reduce(countFruit.gatherFruit);
+
+// console.log({ ...countFruit });
+// console.log(countFruit);
+
+// const cart = [
+//   { item: "Pen", price: 2 },
+//   { item: "Notebook", price: 15 },
+//   { item: "Backpack", price: 50 },
+//   { item: "Eraser", price: 1 },
+// ];
+
+// Your goal: Find the total price of all items > $10, including 10% tax.
+
+// const newPrices = cart
+//   .filter((e) => e.price < 10)
+//   .map((e) => e.price * 0.01 + e.price)
+//   .reduce((a, b) => a + b);
+
+// console.log(newPrices.toFixed(2));
+
+//! Arrays Methods Day 2
+
+//* Filter
+//? array.prototype.filter() : return array of elements that retur true if a condition is met
+
+//Level 1 ------
+
+//Even Numbers Only
+//? Even Numbers Only
+// const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// //Use filter to create a new array containing only the even numbers
+
+// const newArr = numbers.filter((e) => {
+//   if (e % 2 === 0) {
+//     return true;
+//   }
+//   return false;
+// });
+
+// console.log(newArr);
+
+//?Short Word Cleanup
+// const tags = ["js", "javascript", "code", "programming", "web", "development"];
+
+// const newTags = tags.filter((e) => e.length >= 4);
+
+// console.log(newTags);
+
+//?No-Nothing (falsy filter)
+
+// const apiData = [0, "apple", "", undefined, "banana", null, 42, false];
+
+// const apiTruthy = apiData.filter((e) => Boolean(e));
+// console.log(apiTruthy);
+
+//Level 2 ----
+
+//? Active User List
+
+// const users = [
+//   { id: 1, name: "Alice", isAdmin: true },
+//   { id: 2, name: "Bob", isAdmin: false },
+//   { id: 3, name: "Charlie", isAdmin: false },
+//   { id: 4, name: "Diana", isAdmin: true },
+// ];
+
+// const admins = users.filter((e) => {
+//   return e.isAdmin ? true : false;
+// });
+
+// console.log(admins);
+
+//?The Price is Right
+// const products = [
+//   { name: "Laptop", price: 1200, category: "electronics" },
+//   { name: "Coffee Mug", price: 15, category: "kitchen" },
+//   { name: "Headphones", price: 150, category: "electronics" },
+//   { name: "Notebook", price: 5, category: "office" },
+// ];
+
+// const electronics = products.filter((e) => {
+//   return e.category === "electronics" && e.price < 500 ;
+// });
+
+// console.log(electronics);
+
+//Level 3 ---
+
+//? The Search Bar simulation
+//query is substring
+//items is array
+// const fruits = ["Apple", "Banana", "Grape", "Orange"];
+// function searchItems(query, items) {
+//   let newSearch = fruits.filter((e) => e.toLowerCase().includes(query));
+
+//   return newSearch;
+// }
+
+// console.log(searchItems("ap", fruits));
+
+//?Unique Values (The IndexOf trick)
+
+// const duplicatesArr = ["apple", "apple", "banana", "orange"];
+
+// const removeDupes = duplicatesArr.filter((e, index, arr) => {
+//   return arr.indexOf(e) === index;
+// });
+
+// console.log(removeDupes);
+
+//* map function
+//? Array.prototype.map()
+//* calls a function on every element in that array and returns a new array of the same length
+
+//1
+//?The multiplier
+
+// const numbers = [2, 4, 6, 8, 10];
+
+// const tripleNumbers = numbers.map((e) => e * 3);
+// console.log(tripleNumbers);
+
+//?Shout it out
+// const userNames = ["alice", "bob", "charlie"];
+// const caps = userNames.map((e) => e.toUpperCase());
+// console.log(caps);
+
+//?Square Roots Given
+
+// const numbers = [1, 4, 9, 16, 25];
+// const squares = numbers.map((e) => Math.sqrt(e));
+// console.log(squares);
+
+//Intermediate
+
+//4
+//?The Name Extractor
+// const users = [
+//   { firstName: "Jane", lastName: "Doe" },
+//   { firstName: "John", lastName: "Smith" },
+//   { firstName: "Alice", lastName: "Wonderland" },
+// ];
+
+// const fullNames = users.map((e) => `${e.firstName} ${e.lastName}`);
+
+// console.log(fullNames);
+
+//5
+//?Price formatter
+// const prices = [19.99, 5, 42.5, 100];
+
+// const newPrices = prices.map((e) => `$${e.toFixed(2)}`);
+
+// console.log(newPrices);
+
+//6
+//? Adding a Property
+// const products = [
+//   { name: "Phone", price: 500 },
+//   { name: "Tablet", price: 300 },
+// ];
+
+// const updatedProducts = products.map((e) => {
+//   e.onSale ??= true;
+//   return e;
+// });
+
+// console.log(updatedProducts);
+
+//7
+//? The index numbering
+
+// const fruits = ["Apple", "Banana", "Cherry"];
+
+// const fruitsIndex = fruits.map((e, i) => `${i}: ${e}`);
+
+// console.log(fruitsIndex);
+
+//window.innerWidth
+
+//window.screen.width
+//screen.width
+
+//?Specific Update
+
+const tasks = [
+  { id: 1, text: "Buy Milk", completed: false },
+  { id: 2, text: "Clean Room", completed: false },
+  { id: 3, text: "Code JS", completed: false },
+];
+
+const updatedTasks = tasks.map((e) => {
+  if (e.id === 2) {
+    e.completed = true;
+    return e;
+  }
+
+  return e;
+});
+
+console.log(updatedTasks);

@@ -1516,19 +1516,378 @@ const people = [
 
 //?Specific Update
 
-const tasks = [
-  { id: 1, text: "Buy Milk", completed: false },
-  { id: 2, text: "Clean Room", completed: false },
-  { id: 3, text: "Code JS", completed: false },
+// const tasks = [
+//   { id: 1, text: "Buy Milk", completed: false },
+//   { id: 2, text: "Clean Room", completed: false },
+//   { id: 3, text: "Code JS", completed: false },
+// ];
+
+// const updatedTasks = tasks.map((e) => {
+//   if (e.id === 2) {
+//     e.completed = true;
+//     return e;
+//   }
+
+//   return e;
+// });
+
+// console.log(updatedTasks);
+
+//1 is not prime
+//a prime number only has two factors
+//ex 2
+// 1 * 2 ; 2 * 1 - Prime Number
+// 1 * 17 ; 17 * 1 - Prime Number
+// 1 * 4 ; 2 * 2 ; 4 * 1 - Not a prime number
+
+//How would I determine if a number is prime?
+// They cannot be divided by 2 and get a whole number
+
+// function isPrime(n) {
+//   if (n <= 1) return false;
+//   if (n === 2 || n === 3) return true;
+//   if (Math.sqrt(n) % 1 === 0) return false;
+
+//   function checkRange(num) {
+//     const x = Math.floor(Math.sqrt(num));
+
+//     for (let i = 2; i < x + 1; i++) {
+//       if (num % i === 0) return false;
+//       continue;
+//     }
+//     return true;
+//   }
+//   return checkRange(n);
+// }
+
+// function isCircularPrime(n) {
+//   if (isPrime(n)) {
+//     return circularPrimeCheck(n);
+//   }
+// }
+
+// function circularPrimeCheck(n) {
+//   let nString = [...n.toString()]; //array
+
+//   for (let i = 0; i < nString.length - 1; i++) {
+//     nString.unshift(nString.pop());
+//     // console.log(nString);
+//     if (isPrime(Number(nString.join("")))) {
+//       continue;
+//     } else {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+// console.log(isCircularPrime(197));
+// console.log(isCircularPrime(23));
+// console.log(isCircularPrime(13));
+// console.log(isCircularPrime(89));
+// console.log(isCircularPrime(1193));
+
+//* Sort
+//Sorts in ascending or descending order - return 1 or -1
+
+// const fruits = ["Banana", "Apple", "Dragonfruit", "Cherry"];
+// console.log(fruits.sort());
+
+//? The Number Trap
+
+// const arr = [10, 5, 80, 2, 1];
+// const newArr = arr.sort((a, b) => {
+//   if (a < b) {
+//     return -1;
+//   }
+//   return 1;
+// });
+// console.log(newArr);
+
+//?Reverse Gear
+
+// const fruits = ["Banana", "Apple", "Dragonfruit", "Cherry"];
+// console.log(fruits.sort().reverse());
+
+//?Sorting By Age
+
+// const peoples = [
+//   { name: "Zara", age: 40 },
+//   { name: "Abby", age: 10 },
+//   { name: "Max", age: 25 },
+// ];
+
+// const youngestToOldest = peoples.sort((a, b) => {
+//   if (a.age > b.age) return 1;
+//   return -1;
+// });
+
+// console.log(youngestToOldest);
+
+//? Price: High to Low
+// const items = [
+//   { name: "Book", price: 15 },
+//   { name: "Laptop", price: 1200 },
+//   { name: "Pen", price: 2 },
+// ];
+// const sortByPrice = items.sort((a, b) => {
+//   if (a.price < b.price) return 1;
+//   return -1;
+// });
+// console.log(sortByPrice);
+
+//? String Length
+
+// const fruitWords = ["watermelon", "apple", "strawberry", "kiwi"];
+
+// const wordLength = fruitWords.sort((a, b) => {
+//   if (a.length > b.length) return 1;
+//   return -1;
+// });
+
+// console.log(wordLength);
+
+//? Case Insensitive Sort
+// const difWords = ["banana", "Apple", "cherry", "Date"];
+// const fairWordSort = difWords.map((e) => e.toLowerCase()).sort();
+// console.log(fairWordSort);
+
+//? Tie Breaker
+// const players = [
+//   { name: "Team A", score: 10 },
+//   { name: "Team B", score: 15 },
+//   { name: "Team C", score: 10 },
+// ];
+
+// const orderedPlayers = players.sort((a, b) => {
+//   if (a.score < b.score) return -1;
+//   return 1;
+// });
+
+// console.log(orderedPlayers);
+
+//check rows - 3
+//check columns -3
+// check diagnals - \ , /
+
+//columns  - 0[0], 1[0], 2[0] | 0[1] , 1[1] , 2[1] | 0[2], 1[2], 2[0]
+
+// function checkColumns(letter, arr) {
+//   let count;
+//   for (let i = 0; i < arr.length - 1; i++) {
+//     for (let a = 0; a < arr.length - 1; a++) {
+//       if (count === 3) return "${letter} wins";
+//       if (arr[i][a] == letter) {
+//         count++;
+//         continue;
+//       } else {
+//         count = 0;
+//         break;
+//       }
+//     }
+//   }
+//   return false;
+// }
+
+// console.log(
+//   checkColumns("X", [
+//     ["X", "O", "X"],
+//     ["X", "X", "X"],
+//     ["O", "O", "X"],
+//   ])
+// );
+
+//! array.prototype.reduce()
+//? The Simple Sum
+
+// const nums = [5, 12, 3, 20];
+// const numSum = nums.reduce((total, next) => total + next);
+// console.log(numSum);
+
+// ? The Maximum
+// const nums = [10, 20, 2, 75, 30];
+// const biggest = nums.reduce((first, next) => {
+//   return Math.max(first, next);
+// });
+// console.log(biggest);
+
+//? The Tally (frequency counter)
+
+// const votes = ["Yes", "No", "Yes", "Yes", "No", "Maybe"];
+
+// const tallyVotes = votes.reduce((obj, current) => {
+//   obj[current] ??= 0;
+//   obj[current]++;
+//   //!passes the baton! (think of it that way!);
+//   return obj;
+// }, {});
+
+// console.log(tallyVotes);
+
+//? The Lookup Map
+// const users = [
+//   { id: "a1", name: "Alice" },
+//   { id: "b2", name: "Bob" },
+//   { id: "c3", name: "Charlie" },
+// ];
+
+// //Needs to return an object where the id is the key
+// //{ a1: { id: 'a1', name: 'Alice' }, b2: { ... }, ... }
+
+// const structuredUsers = users.reduce((obj, current) => {
+//   obj[current.id] ??= current;
+//   return obj;
+// }, {});
+
+// console.log(structuredUsers);
+
+//? Flattening an Array
+
+// const nested = [
+//   [1, 2],
+//   [3, 4],
+//   [5, 6],
+// ];
+
+// const newNested = nested.reduce((arr, current) => {
+//   if (arr.length < 1) return arr.concat(current);
+//   return [...arr, ...current];
+// }, []);
+
+// console.log(newNested);
+
+//? Grouping Items
+// const peoples = [
+//   { name: "Alice", age: 21 },
+//   { name: "Max", age: 20 },
+//   { name: "Jane", age: 21 },
+// ];
+
+//{ '20': [{ name: 'Max', age: 20 }], '21': [{ name: 'Alice'... }, { name: 'Jane'... }] }
+
+// const ageGroup = peoples.reduce((obj, current) => {
+//   // obj[current.age] ??= [{ ...current }];
+//   if (obj[current.age] === undefined) {
+//     obj[current.age] = [{ ...current }];
+//     return obj;
+//   }
+//   if (obj[current.age][0].age === current.age) {
+//     obj[current.age] = [...obj[current.age], { ...current }];
+//     return obj;
+//   }
+//   return obj;
+// }, {});
+
+// console.log(ageGroup);
+
+//? Challenge 1
+
+/*
+Challenge 1: The Grocery Store Audit
+You have a list of products. Your goal is to find the total cost of restocking the fruit section.
+
+The Tasks:
+
+Only look at items in the "fruit" category.
+
+Only look at items where the stock is less than 5.
+
+For these items, the price is going to increase by 20% due to the shortage.
+
+Arrange these items so the one with the lowest stock is first.
+
+Calculate the final combined price of one of each of these adjusted items.
+*/
+
+// const inventory = [
+//   { name: "Apple", category: "fruit", stock: 2, price: 1.0 },
+//   { name: "Carrot", category: "veggie", stock: 1, price: 0.5 },
+//   { name: "Banana", category: "fruit", stock: 10, price: 0.25 },
+//   { name: "Pear", category: "fruit", stock: 3, price: 1.5 },
+//   { name: "Orange", category: "fruit", stock: 0, price: 0.75 },
+// ];
+
+// const newInventory = inventory
+//   .filter((e) => e.category === "fruit")
+//   .filter((e) => e.stock < 5)
+//   .map((e) => e.price * 1.2)
+//   .sort((first, second) => first - second)
+//   .reduce((acc, current) => acc + current, 0)
+//   .toFixed(2);
+
+// console.log(typeof newInventory);
+
+// // Your logic here:
+// const restockCost = inventory // ... chain your logic
+
+//? The Student Achievement List
+
+/* 
+The Scenario: You are preparing a list for a graduation ceremony. You need to take a raw list of students and turn it into a single, professional-looking string.
+
+The Tasks:
+
+Filter: Ignore any students with a gpa below 3.0.
+
+Transform: For the eligible students, create a string for each that looks exactly like this: "NAME (GPA)" — for example: "ALICE (3.8)". (Note: Make the name uppercase).
+
+Sort: Arrange this list of strings alphabetically by name.
+
+Final Step: Combine all these strings into one single paragraph, where each student is separated by a semicolon and a space (; ).
+*/
+
+// const students = [
+//   { name: "Alice", gpa: 3.8 },
+//   { name: "Bob", gpa: 2.5 },
+//   { name: "Charlie", gpa: 3.2 },
+//   { name: "David", gpa: 3.9 },
+// ];
+
+// // Your logic here:
+
+// const ceremony = students
+//   .filter((e) => e.gpa >= 3)
+//   .map((e) => `${e.name.toUpperCase()} (${e.gpa})`)
+//   .sort()
+//   .join("; ");
+// // .reduce((acc, current) => acc + `${current};  `, " ");
+
+// console.log(ceremony);
+
+//? Final Boss
+//sum = total stars
+//comparison = top repos
+
+const repos = [
+  { name: "CoolApp", stars: 50, forks: 10, private: false },
+  { name: "SecretProject", stars: 1000, forks: 500, private: true },
+  { name: "UtilityLib", stars: 20, forks: 5, private: false },
+  { name: "WebFramework", stars: 100, forks: 40, private: false },
 ];
 
-const updatedTasks = tasks.map((e) => {
-  if (e.id === 2) {
-    e.completed = true;
-    return e;
-  }
+//sort - shorthand
+//first - second (ascending)
+//second - first (descending)
+//! filter map reduce sort
+// Your logic here:
 
-  return e;
-});
+//points = stars * forks
+// const filteredRepos = repos
+//   .filter((e) => !e.private)
+//   .sort(
+//     (first, second) => second.stars * second.forks - first.stars * first.forks
+//   )
+//   .reduce((acc, current, index) => {
+//     acc.totalStars += current.stars;
+//     if (index === 0) acc.topRepo = current.name;
+//     return acc;
+//   });
 
-console.log(updatedTasks);
+// // .;
+
+// // console.log(filteredRepos);
+
+// const obj = {};
+
+// obj.names = "Chris";
+// console.log(obj);

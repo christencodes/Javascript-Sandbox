@@ -10,10 +10,15 @@ body,
 html {
   background-color: rgb(49, 49, 49);
   color: whitesmoke;
+  font-size: 1.3rem;
 }
 
 :root {
   --font-family: "JetBrains Mono";
   --color-green: hsl(120, 100%, 50%);
   --color-blue: hsl(238, 100%, 50%);
+}
+
+.clamper {
+  font-size: clamp(2rem, 1rem + 10vw, 200px);
 }

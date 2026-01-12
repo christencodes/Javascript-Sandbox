@@ -1858,12 +1858,12 @@ Final Step: Combine all these strings into one single paragraph, where each stud
 //sum = total stars
 //comparison = top repos
 
-const repos = [
-  { name: "CoolApp", stars: 50, forks: 10, private: false },
-  { name: "SecretProject", stars: 1000, forks: 500, private: true },
-  { name: "UtilityLib", stars: 20, forks: 5, private: false },
-  { name: "WebFramework", stars: 100, forks: 40, private: false },
-];
+// const repos = [
+//   { name: "CoolApp", stars: 50, forks: 10, private: false },
+//   { name: "SecretProject", stars: 1000, forks: 500, private: true },
+//   { name: "UtilityLib", stars: 20, forks: 5, private: false },
+//   { name: "WebFramework", stars: 100, forks: 40, private: false },
+// ];
 
 //sort - shorthand
 //first - second (ascending)
@@ -1891,3 +1891,29 @@ const repos = [
 
 // obj.names = "Chris";
 // console.log(obj);
+
+//? Inventory System Challenge
+
+const inventory = [
+  { id: 1, name: "Laptop", price: 1200, category: "Electronics", stock: 5 },
+  { id: 2, name: "Coffee Maker", price: 80, category: "Appliances", stock: 12 },
+  { id: 3, name: "Headphones", price: 150, category: "Electronics", stock: 0 },
+  { id: 4, name: "Monitor", price: 300, category: "Electronics", stock: 8 },
+  { id: 5, name: "Toaster", price: 40, category: "Appliances", stock: 3 },
+];
+
+const availableProducts = inventory
+  .filter((e) => e.stock > 0)
+  .map((e) => {
+    let { price, name, stock } = e;
+    return { name: name, price: price * 0.1 + price, stock: stock };
+  });
+
+// const { price, stock } = availableProducts.find((e) => e.name === "Monitor");
+// console.log(`The monitor costs $${price} and we have ${stock} in stock`);
+// console.log(availableProducts.find((e) => e.name === "Monitor"));
+
+const [itemOne, itemtwo] = availableProducts;
+console.log(availableProducts);
+console.log(itemOne);
+console.log(itemtwo);

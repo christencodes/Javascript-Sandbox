@@ -1894,26 +1894,58 @@ Final Step: Combine all these strings into one single paragraph, where each stud
 
 //? Inventory System Challenge
 
-const inventory = [
-  { id: 1, name: "Laptop", price: 1200, category: "Electronics", stock: 5 },
-  { id: 2, name: "Coffee Maker", price: 80, category: "Appliances", stock: 12 },
-  { id: 3, name: "Headphones", price: 150, category: "Electronics", stock: 0 },
-  { id: 4, name: "Monitor", price: 300, category: "Electronics", stock: 8 },
-  { id: 5, name: "Toaster", price: 40, category: "Appliances", stock: 3 },
+// const inventory = [
+//   { id: 1, name: "Laptop", price: 1200, category: "Electronics", stock: 5 },
+//   { id: 2, name: "Coffee Maker", price: 80, category: "Appliances", stock: 12 },
+//   { id: 3, name: "Headphones", price: 150, category: "Electronics", stock: 0 },
+//   { id: 4, name: "Monitor", price: 300, category: "Electronics", stock: 8 },
+//   { id: 5, name: "Toaster", price: 40, category: "Appliances", stock: 3 },
+// ];
+
+// const availableProducts = inventory
+//   .filter((e) => e.stock > 0)
+//   .map((e) => {
+//     let { price, name, stock } = e;
+//     return { name: name, price: price * 0.1 + price, stock: stock };
+//   });
+
+// // const { price, stock } = availableProducts.find((e) => e.name === "Monitor");
+// // console.log(`The monitor costs $${price} and we have ${stock} in stock`);
+// // console.log(availableProducts.find((e) => e.name === "Monitor"));
+
+// const [itemOne, itemtwo] = availableProducts;
+// console.log(availableProducts);
+// console.log(itemOne);
+// console.log(itemtwo);
+
+const gameData = [
+  { name: "Dragon", atk: 1200, def: 800 },
+  { name: "Soldier", atk: 500, def: 400 },
+  { name: "Healer", atk: 100, def: 1200 },
+  { name: "Goku", atk: 9999, def: 800 },
+  { name: "Vegeta", atk: 9998, def: 400 },
+  { name: "Krillin", atk: 200, def: 1200 },
 ];
 
-const availableProducts = inventory
-  .filter((e) => e.stock > 0)
-  .map((e) => {
-    let { price, name, stock } = e;
-    return { name: name, price: price * 0.1 + price, stock: stock };
+// Get a reference to the template and container
+const cardTemplate = document.getElementById("card-template");
+
+const cardContainer = document.getElementById("card-container");
+
+gameData
+  .filter((e) => e.def > 900)
+  .forEach((character) => {
+    // console.log(character);
+    // console.log(character.name);
+    const cardInstance = cardTemplate.content.cloneNode(true);
+
+    const nameInstance = cardInstance.querySelector(".card-title");
+    const atkInstance = cardInstance.querySelector(".atk");
+    const defInstance = cardInstance.querySelector(".def");
+
+    nameInstance.textContent = character.name;
+    atkInstance.textContent = character.atk;
+    defInstance.textContent = character.def;
+
+    cardContainer.appendChild(cardInstance);
   });
-
-// const { price, stock } = availableProducts.find((e) => e.name === "Monitor");
-// console.log(`The monitor costs $${price} and we have ${stock} in stock`);
-// console.log(availableProducts.find((e) => e.name === "Monitor"));
-
-const [itemOne, itemtwo] = availableProducts;
-console.log(availableProducts);
-console.log(itemOne);
-console.log(itemtwo);

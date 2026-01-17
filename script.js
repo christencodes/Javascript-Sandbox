@@ -1177,66 +1177,66 @@
 
 //[1,2,4,3,5]
 
-const inventors = [
-  { first: "Albert", last: "Einstein", year: 1879, passed: 1955 },
-  { first: "Isaac", last: "Newton", year: 1643, passed: 1727 },
-  { first: "Galileo", last: "Galilei", year: 1564, passed: 1642 },
-  { first: "Marie", last: "Curie", year: 1867, passed: 1934 },
-  { first: "Johannes", last: "Kepler", year: 1571, passed: 1630 },
-  { first: "Nicolaus", last: "Copernicus", year: 1473, passed: 1543 },
-  { first: "Max", last: "Planck", year: 1858, passed: 1947 },
-  { first: "Katherine", last: "Blodgett", year: 1898, passed: 1979 },
-  { first: "Ada", last: "Lovelace", year: 1815, passed: 1852 },
-  { first: "Sarah E.", last: "Goode", year: 1855, passed: 1905 },
-  { first: "Lise", last: "Meitner", year: 1878, passed: 1968 },
-  { first: "Hanna", last: "Hammarström", year: 1829, passed: 1909 },
-];
+// const inventors = [
+//   { first: "Albert", last: "Einstein", year: 1879, passed: 1955 },
+//   { first: "Isaac", last: "Newton", year: 1643, passed: 1727 },
+//   { first: "Galileo", last: "Galilei", year: 1564, passed: 1642 },
+//   { first: "Marie", last: "Curie", year: 1867, passed: 1934 },
+//   { first: "Johannes", last: "Kepler", year: 1571, passed: 1630 },
+//   { first: "Nicolaus", last: "Copernicus", year: 1473, passed: 1543 },
+//   { first: "Max", last: "Planck", year: 1858, passed: 1947 },
+//   { first: "Katherine", last: "Blodgett", year: 1898, passed: 1979 },
+//   { first: "Ada", last: "Lovelace", year: 1815, passed: 1852 },
+//   { first: "Sarah E.", last: "Goode", year: 1855, passed: 1905 },
+//   { first: "Lise", last: "Meitner", year: 1878, passed: 1968 },
+//   { first: "Hanna", last: "Hammarström", year: 1829, passed: 1909 },
+// ];
 
-const people = [
-  "Bernhard, Sandra",
-  "Bethea, Erin",
-  "Becker, Carl",
-  "Bentsen, Lloyd",
-  "Beckett, Samuel",
-  "Blake, William",
-  "Berger, Ric",
-  "Beddoes, Mick",
-  "Beethoven, Ludwig",
-  "Belloc, Hilaire",
-  "Begin, Menachem",
-  "Bellow, Saul",
-  "Benchley, Robert",
-  "Blair, Robert",
-  "Benenson, Peter",
-  "Benjamin, Walter",
-  "Berlin, Irving",
-  "Benn, Tony",
-  "Benson, Leana",
-  "Bent, Silas",
-  "Berle, Milton",
-  "Berry, Halle",
-  "Biko, Steve",
-  "Beck, Glenn",
-  "Bergman, Ingmar",
-  "Black, Elk",
-  "Berio, Luciano",
-  "Berne, Eric",
-  "Berra, Yogi",
-  "Berry, Wendell",
-  "Bevan, Aneurin",
-  "Ben-Gurion, David",
-  "Bevel, Ken",
-  "Biden, Joseph",
-  "Bennington, Chester",
-  "Bierce, Ambrose",
-  "Billings, Josh",
-  "Birrell, Augustine",
-  "Blair, Tony",
-  "Beecher, Henry",
-  "Biondo, Frank",
-];
+// const people = [
+//   "Bernhard, Sandra",
+//   "Bethea, Erin",
+//   "Becker, Carl",
+//   "Bentsen, Lloyd",
+//   "Beckett, Samuel",
+//   "Blake, William",
+//   "Berger, Ric",
+//   "Beddoes, Mick",
+//   "Beethoven, Ludwig",
+//   "Belloc, Hilaire",
+//   "Begin, Menachem",
+//   "Bellow, Saul",
+//   "Benchley, Robert",
+//   "Blair, Robert",
+//   "Benenson, Peter",
+//   "Benjamin, Walter",
+//   "Berlin, Irving",
+//   "Benn, Tony",
+//   "Benson, Leana",
+//   "Bent, Silas",
+//   "Berle, Milton",
+//   "Berry, Halle",
+//   "Biko, Steve",
+//   "Beck, Glenn",
+//   "Bergman, Ingmar",
+//   "Black, Elk",
+//   "Berio, Luciano",
+//   "Berne, Eric",
+//   "Berra, Yogi",
+//   "Berry, Wendell",
+//   "Bevan, Aneurin",
+//   "Ben-Gurion, David",
+//   "Bevel, Ken",
+//   "Biden, Joseph",
+//   "Bennington, Chester",
+//   "Bierce, Ambrose",
+//   "Billings, Josh",
+//   "Birrell, Augustine",
+//   "Blair, Tony",
+//   "Beecher, Henry",
+//   "Biondo, Frank",
+// ];
 
-//* filter()
+// //* filter()
 /* Returns an Array */
 
 //array.prototype.filter()
@@ -1918,34 +1918,352 @@ Final Step: Combine all these strings into one single paragraph, where each stud
 // console.log(itemOne);
 // console.log(itemtwo);
 
-const gameData = [
-  { name: "Dragon", atk: 1200, def: 800 },
-  { name: "Soldier", atk: 500, def: 400 },
-  { name: "Healer", atk: 100, def: 1200 },
-  { name: "Goku", atk: 9999, def: 800 },
-  { name: "Vegeta", atk: 9998, def: 400 },
-  { name: "Krillin", atk: 200, def: 1200 },
-];
+// const gameData = [
+//   { name: "Dragon", atk: 1200, def: 800 },
+//   { name: "Soldier", atk: 500, def: 400 },
+//   { name: "Healer", atk: 100, def: 1200 },
+//   { name: "Goku", atk: 9999, def: 800 },
+//   { name: "Vegeta", atk: 9998, def: 400 },
+//   { name: "Krillin", atk: 200, def: 1200 },
+// ];
 
-// Get a reference to the template and container
-const cardTemplate = document.getElementById("card-template");
+// // Get a reference to the template and container
+// const cardTemplate = document.getElementById("card-template");
 
-const cardContainer = document.getElementById("card-container");
+// const cardContainer = document.getElementById("card-container");
 
-gameData
-  .filter((e) => e.def > 900)
-  .forEach((character) => {
-    // console.log(character);
-    // console.log(character.name);
-    const cardInstance = cardTemplate.content.cloneNode(true);
+// gameData
+//   .filter((e) => e.def > 900)
+//   .forEach((character) => {
+//     // console.log(character);
+//     // console.log(character.name);
+//     const cardInstance = cardTemplate.content.cloneNode(true);
 
-    const nameInstance = cardInstance.querySelector(".card-title");
-    const atkInstance = cardInstance.querySelector(".atk");
-    const defInstance = cardInstance.querySelector(".def");
+//     const nameInstance = cardInstance.querySelector(".card-title");
+//     const atkInstance = cardInstance.querySelector(".atk");
+//     const defInstance = cardInstance.querySelector(".def");
 
-    nameInstance.textContent = character.name;
-    atkInstance.textContent = character.atk;
-    defInstance.textContent = character.def;
+//     nameInstance.textContent = character.name;
+//     atkInstance.textContent = character.atk;
+//     defInstance.textContent = character.def;
 
-    cardContainer.appendChild(cardInstance);
-  });
+//     cardContainer.appendChild(cardInstance);
+//   });
+
+//Looping Objects: Objects Keys, Values, and Entries
+
+// const friend = {
+//   name: "Doc",
+//   age: 143,
+//   country: "jupiter",
+// };
+
+//*Property names
+//!Use Object.keys(<insert object here>)
+//!this will give us the property names inside the object
+//!it returns an array of the objects key names
+
+// const properties = Object.keys(friend);
+// console.log(properties);
+
+// for (const props of Object.keys(friend)) {
+//   console.log(props);
+// }
+
+//*Property Values
+//!Object.values(<insert object here>)
+//!returns an array containing the values of all keys in the object
+// const values = Object.values(friend);
+// console.log(values);
+
+//*Entire Object
+//!Object.entries returns an array of arrays.
+//! Each array contains an array containing the key and values
+
+// const entries = Object.entries(friend);
+// console.log(entries);
+
+//? We can destructure inside of the forof
+//? The const is the element inside of the object
+//? Consider what that element actually is. Object or array or ...?
+// for (const [key, val] of entries) {
+//   console.log(`The key is ${key}. The value is ${val}.`);
+// }
+
+// const game = {
+//   team1: "Bayern Munich",
+//   team2: "Borrussia Dortmund",
+//   players: [
+//     [
+//       "Neuer",
+//       "Pavard",
+//       "Martinez",
+//       "Alaba",
+//       "Davies",
+//       "Kimmich",
+//       "Goretzka",
+//       "Coman",
+//       "Muller",
+//       "Gnarby",
+//       "Lewandowski",
+//     ],
+//     [
+//       "Burki",
+//       "Schulz",
+//       "Hummels",
+//       "Akanji",
+//       "Hakimi",
+//       "Weigl",
+//       "Witsel",
+//       "Hazard",
+//       "Brandt",
+//       "Sancho",
+//       "Gotze",
+//     ],
+//   ],
+//   score: "4:0",
+//   scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+//   date: "Nov 9th, 2037",
+//   odds: {
+//     team1: 1.33,
+//     x: 3.25,
+//     team2: 6.5,
+//   },
+// };
+
+// const playerScored = Object.entries(game.scored);
+// console.log(playerScored);
+
+// for (const [goal, player] of playerScored) {
+//   console.log(`Goal ${goal} : ${player}`);
+// }
+
+// const { team1, team2, odds } = game;
+
+// for (const prop of Object.entries(odds)) {
+//   const message = prop[0].includes("team") ? "victory" : "draw";
+//   console.log(`Odd of ${message} ${game[prop[0]]} : ${prop[1]}`);
+// }
+
+// const scorers = {
+//   Gnarby: 0,
+//   Hummels: 0,
+//   Lewandowski: 0,
+// };
+
+// for (const player of game.scored) {
+//   scorers[player]++;
+// }
+
+// console.log(scorers);
+
+//Sets
+//? is a collection of unique values with no duplicates
+//! Set will remove duplicates upon creation
+//! The order of elements in a set doesn't matter
+
+// const viewerSet = new Set([
+//   "neitodesu",
+//   "taylor",
+//   "david",
+//   "david",
+//   "neitodesu",
+//   "kay",
+// ]);
+
+// console.log(viewerSet);
+
+//* Get the length of set with Set.size
+// let x = viewerSet.size;
+// console.log(x);
+
+//*Check if element is in set Set.has(<insert value here>)
+// let y = viewerSet.has("david");
+// console.log(y);
+
+//*Add elements to a set Set.add(<insert value here>)
+// viewerSet.add("gros");
+// viewerSet.add("gros");
+// console.log(viewerSet);
+
+//* Delete elements in a set Set.delete(<insert value here)
+// viewerSet.delete("gros");
+// console.log(viewerSet);
+
+//* Remove all elements from a set Set.clear()
+// viewerSet.clear();
+// console.log(viewerSet);
+
+//* Loop through set with forOf
+
+// for (const element of viewerSet) {
+//   console.log(element);
+// }
+
+// const fruits = ["Apples", "Oranges", "Bananas", "Apples", "Oranges", "Oranges"];
+// // console.log(fruits);
+// const fruitSet = new Set(fruits);
+
+// const singleFruits = [...fruitSet];
+// console.log(singleFruits);
+
+//*Sets methods - some of these are ES2025
+
+const italianFoods = new Set([
+  "pasta",
+  "gnocchi",
+  "tomatoes",
+  "olive oil",
+  "garlic",
+  "basil",
+]);
+
+const mexicanFoods = new Set([
+  "tortillas",
+  "beans",
+  "rice",
+  "tomatoes",
+  "avocado",
+  "garlic",
+]);
+
+//*Intersection method
+//? Set.intersection(<insert set here>)
+//? Returns a set containing the elements contained in both sets
+
+// const commonFoods = italianFoods.intersection(mexicanFoods);
+
+// const sameFoods = [...italianFoods.intersection(mexicanFoods)];
+// console.log(sameFoods);
+
+//!Iterating over a set with forOf
+// for (const element of commonFoods) {
+//   console.log(element);
+// }
+
+//*Union method
+//?Set.union(<insert set here>)
+//? Returns a set containing elements in both Sets with no duplicates
+
+// const foodFusions = [...italianFoods.union(mexicanFoods)];
+// console.log(foodFusions);
+
+//*Difference method
+//? Set.difference(<insert set here>);
+//? Returns values that are uniquely in the first set
+
+// const uniquelyItalian = [...italianFoods.difference(mexicanFoods)];
+// console.log(uniquelyItalian);
+
+// const uniquelyMexican = [...mexicanFoods.difference(italianFoods)];
+// console.log(uniquelyMexican);
+
+//*Symmetric Diffrence method
+//? Set.symmetricDifference(<insert set here>);
+//? Returns values that are unique to both sets
+//? Does not return values that are similar
+
+// const uniquelyItalianMexican = [
+//   ...italianFoods.symmetricDifference(mexicanFoods),
+// ];
+
+// console.log(uniquelyItalianMexican);
+
+//*isDisjointFrom method
+//? Set.isDisjointfrom(<insert set here>);
+//? Checks whether or not the sets have any crossover elements
+//? If they have similar eements it returns false else true
+
+//*MAPS! - very useful
+//? Maps have key-value pairs like objects
+//! BUT - the keys in maps can be any type!
+
+//easiest way to create a map is to create an empty map
+// const testMap = new Map();
+//?use map.set(<insert key>, <insert value>) - this will place a new key-value pair in the MAP and it returns the MAP [allowing chaining]
+// testMap.set("internet", 67).set(["food"], "hamburger");
+// testMap.set({ name: "Chris", age: 34 }, "web developer");
+
+// console.log(testMap);
+
+//? use map.get(<insert key) - this will return the value mapped to that key
+//? just returns the value not the map
+
+// console.log(testMap.get("internet"));
+
+const user = new Map();
+user
+  .set("name", "COD5shooter")
+  .set("age", 99)
+  .set("premium", true)
+  .set("gold", false)
+  .set("2factor", true);
+
+//? use map.has(<insert key>) - this will return true or false if the key exists or not
+
+// console.log(user.has(21)); //false
+// console.log(user.has("gold")); //true
+// console.log(user.get("gold")); //actual value
+
+//? use map.delete(<insert key>) - this will delete the key-value pair at key
+//? returns true if the element exists and is remove and false otherwise
+
+// console.log(user.delete("gold"));
+// console.log(user);
+
+//? use map.size() - this will return the amount of key-value pairs within the map
+// console.log(user);
+// console.log(user.size); //5
+
+//? use map.clear() - this will remove all key-value pairs from the map
+// user.clear();
+// console.log(user);
+
+//? Weird Stuff
+
+// user.set(document.getElementById("card-container"), "card-container");
+// console.log(user);
+
+//*Different way of creating a map
+
+const numbers = new Map([
+  [1, "one"],
+  [2, "two"],
+  [3, "threee"],
+  [4, "four"],
+  [5, "five"],
+]);
+
+// console.log(numbers);
+
+//!Convert object to map
+
+//test object
+
+const person = {
+  name: "Chris",
+  age: 34,
+  country: "USA",
+  state: "TX",
+};
+
+console.log(typeof person, person);
+
+const personMap = new Map(Object.entries(person));
+
+console.log(personMap);
+
+//!Iterating Maps
+
+// for (const [number, numberName] of numbers) {
+//   console.log(`${number} is called ${numberName}`);
+// }
+
+// for (const [prop, value] of personMap) {
+//   console.log(`${prop} is ${value}`);
+// }
+
+//!Convert map to array
+
+const personArr = [...personMap];
+console.log(personArr);

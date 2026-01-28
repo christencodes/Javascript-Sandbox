@@ -2109,24 +2109,6 @@ Final Step: Combine all these strings into one single paragraph, where each stud
 
 //*Sets methods - some of these are ES2025
 
-const italianFoods = new Set([
-  "pasta",
-  "gnocchi",
-  "tomatoes",
-  "olive oil",
-  "garlic",
-  "basil",
-]);
-
-const mexicanFoods = new Set([
-  "tortillas",
-  "beans",
-  "rice",
-  "tomatoes",
-  "avocado",
-  "garlic",
-]);
-
 //*Intersection method
 //? Set.intersection(<insert set here>)
 //? Returns a set containing the elements contained in both sets
@@ -2191,13 +2173,13 @@ const mexicanFoods = new Set([
 
 // console.log(testMap.get("internet"));
 
-const user = new Map();
-user
-  .set("name", "COD5shooter")
-  .set("age", 99)
-  .set("premium", true)
-  .set("gold", false)
-  .set("2factor", true);
+// const user = new Map();
+// user
+//   .set("name", "COD5shooter")
+//   .set("age", 99)
+//   .set("premium", true)
+//   .set("gold", false)
+//   .set("2factor", true);
 
 //? use map.has(<insert key>) - this will return true or false if the key exists or not
 
@@ -2226,13 +2208,13 @@ user
 
 //*Different way of creating a map
 
-const numbers = new Map([
-  [1, "one"],
-  [2, "two"],
-  [3, "threee"],
-  [4, "four"],
-  [5, "five"],
-]);
+// const numbers = new Map([
+//   [1, "one"],
+//   [2, "two"],
+//   [3, "threee"],
+//   [4, "four"],
+//   [5, "five"],
+// ]);
 
 // console.log(numbers);
 
@@ -2240,18 +2222,18 @@ const numbers = new Map([
 
 //test object
 
-const person = {
-  name: "Chris",
-  age: 34,
-  country: "USA",
-  state: "TX",
-};
+// const person = {
+//   name: "Chris",
+//   age: 34,
+//   country: "USA",
+//   state: "TX",
+// };
 
-console.log(typeof person, person);
+// console.log(typeof person, person);
 
-const personMap = new Map(Object.entries(person));
+// const personMap = new Map(Object.entries(person));
 
-console.log(personMap);
+// console.log(personMap);
 
 //!Iterating Maps
 
@@ -2265,5 +2247,261 @@ console.log(personMap);
 
 //!Convert map to array
 
-const personArr = [...personMap];
-console.log(personArr);
+// const personArr = [...personMap];
+// console.log(personArr);
+
+//reverse a number
+//take an
+
+// function descendingNumber(n) {
+//   // let x = String(n);
+//   // const numberArr = [...x];
+//   // const newNumber = Number(numberArr.sort((a, b) => b - a).join(""));
+//   // return newNumber;
+//   return Number([...String(n)].sort((a, b) => b - a).join(""));
+// }
+
+// console.log(descendingNumber(8756300281));
+
+//array
+
+// function arrayIncrementer(arr) {
+//   const newarr = Array.from(arr.entries());
+//   // console.log(newarr);
+//   const containerArr = [];
+
+//   for (const [a, b] of newarr) {
+//     containerArr.push(a + 1 + b);
+//   }
+
+//   const finalArr = containerArr.map((number) => {
+//     if (number > 9) {
+//       return Number(String(number).slice(1));
+//     }
+
+//     return number;
+//   });
+
+//   return finalArr;
+// }
+
+// console.log(arrayIncrementer([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+
+//? Sets
+//* Cannot have any duplicates
+//! const ordersSet = new Set[<insert iterable here>];
+//No key value pairs
+//Elements are unique
+//Order of element do not matter
+//Sets are iterables
+
+const newSet = new Set(["Pasta", "Pizza", "Pizza", "Pasta", "Peppers"]);
+// console.log(newSet);
+
+//strings are iterables as well so they can be passed in
+//note : it has no duplicates
+const newSetString = new Set("christencodes");
+// console.log(newSetString);
+
+//* Set.size gives us the size/length of a set
+//with this we can check the number of something with no duplicates
+//so we could pass in an array with duplicates and get only the items present
+// console.log(`The size of the set is : ${newSetString.size}`);
+
+//* Set.has(<insert value>) give us TRUE if the value is present in the set
+//* FALSE if the value is not present
+//similar to the includes method in arrays
+
+// console.log(newSetString.has("z")); //false
+// console.log(newSet.has("Pizza")); //true
+
+//* Set.add(<insert value>) adds a value to the set
+//remember , order does not matter with sets and there are no duplicates
+
+const names = new Set(["Chris", "Jan", "Cherri", "April"]);
+// console.log(`The size of names is : ${names.size}`);
+// console.log(
+//   `Names Set ${names.has("Crystal") ? "does" : "does not"} have the name Crystal in it!`,
+// );
+//add a value to a set
+// console.log(names);
+// names.add("Crystal");
+// names.add("Crystal");
+// names.add("Symon");
+// console.log(names);
+
+//* Set.delete(<insert value>) Deletes a value from the set
+//Remember, there are no duplicates and order does not matter
+
+const letterGrades = new Set(["a", "b", "c", "c", "f", "f", "a"]);
+// console.log(`Letter Grades contains ${letterGrades.size} grades`);
+// console.log(
+//   `There ${letterGrades.has("d") ? "is" : "is not"} a grade of D in the Letter Grades set.`,
+// );
+
+// console.log(letterGrades);
+// letterGrades.add("d");
+// console.log(letterGrades);
+// letterGrades.delete("f");
+// console.log(letterGrades);
+
+//* We do not retrieve values form sets
+//There is no way of getting values out of a set
+//Order is not in a set
+//We just need to know if a value is in a set or not
+
+//*Set.clear() removes all values from a set
+
+// const numbersSet = new Set([1, 2, 3, 4, 5]);
+// console.log(numbersSet);
+// numbersSet.clear();
+// console.log(numbersSet);
+
+//looping is possible in sets
+//lets loop letter grades
+
+// for (const letter of letterGrades) {
+//   console.log(letter);
+// }
+
+//? In big code base the normal use case for Sets it to remove duplicate values of arrays
+
+//Example
+
+const staff = [
+  "waiter",
+  "chef",
+  "waiter",
+  "manager",
+  "chef",
+  "manager",
+  "waiter",
+];
+
+//we can create an array of all roles in the business by creating a set
+//the set will have no duplicates
+
+const staffSet = new Set(staff);
+// console.log(staffSet);
+
+//remember a set is an iterable
+//the spread(...this) operator works on a set
+//so we can spread the unique set into a new array like this
+
+// const staffUnique = [...new Set(staff)];
+// // console.log(staffUnique);
+
+// //no we have an array with no duplicates
+
+// //we could discover the unique positions in another way..
+
+// console.log(new Set(staff).size); //this returns the number of unique positions in the set
+
+// //I can use this to check the amount of unique letters in a name
+
+// console.log(new Set("Christen").size);
+
+//! Sets do not exist to replace arrays
+//* If you need a structure that needs order and duplicates - arrays
+//* sets have the unique property that makes them useful when manipulating data
+
+//? SETS METHODS - ES2025
+
+const italianFoods = new Set([
+  "pasta",
+  "gnocchi",
+  "tomatoes",
+  "olive oil",
+  "garlic",
+  "basil",
+]);
+
+const mexicanFoods = new Set([
+  "tortillas",
+  "beans",
+  "rice",
+  "tomatoes",
+  "avocado",
+  "garlic",
+]);
+
+//* Set.intersection(<insert other set>) - will return a new set with the elements that they have in common
+
+// console.log(mexicanFoods.intersection(italianFoods)); //returns array containing similar items
+
+// console.log("--------------");
+//lets get an array of what they have in common
+
+//rest is on the left side
+//spread is on the right side
+const similarFoodsArr = [...mexicanFoods.intersection(italianFoods)];
+// console.log(similarFoodsArr);
+
+//*Set.union(<other set>) will create a new set with the values in both but without duplicates
+
+// console.log("-------------------------");
+// const MexicanItalian = [...new Set(italianFoods.union(mexicanFoods))];
+// console.log(MexicanItalian);
+// console.log("-------------------------");
+// //we can spread both sets in
+// const practiceSet = [...new Set([...italianFoods, ...mexicanFoods])];
+// console.log(practiceSet);
+
+//*Set.difference(<other set>) will return a set that contains only the values unique to the first set
+
+// const uniqueItalianFoods = [...italianFoods.difference(mexicanFoods)];
+// console.log(uniqueItalianFoods);
+
+//*Set.symmetricDifference(<insert set>) - returns a set that contains the unique values of both sets
+
+// const uniqueFoods = [...italianFoods.symmetricDifference(mexicanFoods)];
+// console.log(uniqueFoods);
+
+//*Set.isDisjointFrom(<insert set>) - will return true if the sets are completely different / will return false if they contain similar elements
+
+// console.log(italianFoods.isDisjointFrom(mexicanFoods)); //false because they contain similar values
+
+//The Bouncer
+const guests = new Set(["Alice", "Bob", "Charlie"]);
+// console.log(guests.add("Alice").size);
+// The set did not change because you cannot have duplicated
+
+//Quick Edit
+// console.log(guests.has("Bob"));
+// guests.delete("Bob");
+// console.log(guests.size);
+// console.log(guests);
+// guests.clear();
+// console.log(guests);
+
+//Duplicate Filter
+// const tags = ["js", "html", "css", "js", "react", "html"];
+
+// const removeDuplicates = (x) => {
+//   return [...new Set(x)];
+// };
+
+// console.log(removeDuplicates(tags));
+
+//Username Validator
+// function isUnique(username, existingUsers) {
+//   if (existingUsers.has(username)) {
+//     return "Username Taken"
+//   }
+
+//   existingUsers.add(username);
+//   return "Welcome!";
+// }
+
+//The intersection - create a new set that contains only the elements that exist in bother
+
+// const setA = new Set([1, 2, 3, 4]);
+// const setB = new Set([3, 4, 5, 6]);
+
+// const setAB = setA.intersection(setB);
+// console.log(setAB);
+
+// //The difference - using the same sets above, create a new Set that contains elements that are in SetA but not in SetB
+
+// const differenceAB = setA.difference(setB); //unique to set A
+// console.log(differenceAB);

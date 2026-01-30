@@ -2505,3 +2505,358 @@ const guests = new Set(["Alice", "Bob", "Charlie"]);
 
 // const differenceAB = setA.difference(setB); //unique to set A
 // console.log(differenceAB);
+
+//* Maps
+// Data structure used to map keys to values
+// Keys can have any value (objects, strings, numbers....)
+
+// *Create a new empty map
+// const newMap = new Map();
+
+//*Map.set(key,value) To fill or add to the map we use
+//Map.set() this updates the map but it also returns the map
+//This allows chaining
+// newMap
+//   .set("chris", "coder")
+//   .set("TinyGamer", "superCoder")
+//   .set(1, "one")
+//   .set(2, "two")
+//   .set(true, "studying")
+//   .set(false, "gaming");
+
+//*Map.get(<insert key>) Allows you to read data from a map
+// console.log(newMap.get(1));
+// console.log(newMap.get(true));
+// console.log(newMap.get(false));
+// console.log("----------------------------------");
+
+//*Map.has(<insert key>) ? true if key is present : false if key is not present
+// console.log(newMap.has("TinyGamer"));
+// console.log(newMap.has("chris"));
+// console.log("----------------------------------");
+
+//*Map.delete(<insert key>) will delete they key if present in Map
+//False if the key is not present
+//True if the key is present + Deletes the key,value pair
+// console.log(newMap.delete(2));
+// console.log(newMap);
+// console.log("----------------------------------");
+
+//*Map.size - returns the number of elements within the map
+// console.log(newMap.size);
+//*Map.clear() - removes all elements within the map
+// newMap.clear();
+// // console.log(newMap);
+// console.log("----------------------------------");
+
+//!Arrays can be used as Map keys
+
+// const testArray = [1, 2];
+// newMap.set([1, 2], "first").set(testArray, "test");
+// console.log(newMap.has([1, 2])); //this is not the same object as the one above
+// console.log(newMap.get(testArray)); //this works because it refers to the same place in memory
+// console.log("----------------------------------");
+
+//?We can grab things from the dom and place it in the set
+// newMap.set(
+//   document.getElementById("card-container"),
+//   "a regular container for cards",
+// );
+// console.log(newMap);
+// console.log(newMap.has(document.getElementById("card-container")));
+// console.log("----------------------------------");
+
+//*Is a map an iterable - YES!
+// for (const [key, value] of newMap) {
+//   console.log(key, value);
+// }
+
+//* You can turn any iterable into a set!
+//You can turn a map into a set
+// const newSetfromMap = new Set(newMap);
+// console.log(newSetfromMap);
+
+//* Map Iterations and Other Things
+
+// const testObject = { 1: "thur", 2: "fri", 3: "sat" };
+// console.log(Object.entries(testObject)); //returns arrays of key,value pairs
+// console.log("----------------------------------");
+
+//we can use [key,value] to create a Map - an array of arrays creates a map
+const celebrities = new Map([
+  ["austin", "powers"],
+  ["angelina", "jolie"],
+  ["brad", "pitt"],
+  ["will", "smith"],
+  ["janet", "jackson"],
+  ["michael", "jackson"],
+]);
+
+// console.log(celebrities);
+//*We can change test object into a map with Object.entries(<insert object>);
+
+// const mapFromTestObject = new Map(Object.entries(testObject));
+// console.log(mapFromTestObject);
+// console.log("----------------------------------");
+//maps are iterables
+//maps are not iterables
+//objects need to be converted to maps to become iterable
+
+// for (const [firstName, lastName] of celebrities) {
+//   console.log(
+//     `First Name: ${firstName.toUpperCase()} Last Name: ${lastName.toUpperCase()}`,
+//   );
+// }
+
+// console.log("----------------------------------");
+//* Converting a map into an array with the spread operator
+//we can destructure anu iterable
+//a map can be destructured into an array of arrays
+
+// const celebArr = [...celebrities];
+// console.log(celebArr);
+// console.log([...celebrities.entries()]);
+// console.log([...celebrities.values()]);
+// console.log([...celebrities.keys()]);
+
+//*Which data structure to choose?
+//*SOURCES OF DATA
+//? From the program itself: Data written directly in source code (status messages)
+//? From the UI: Data input from the user or data written in DOM (tasks in todo app)
+//? From external sources: Data fetched for example from web API (recipe objects)
+// => These are collections of data
+//! Data Structures - store collections of data
+
+//? Simple List of Values?
+//*Arrays or Sets
+
+//? Arrays
+// Use when you need ordered list of values (might contain duplicates)
+// Use when you need to manipulate data
+
+//? Sets
+// Use when you need to work wth unique values
+// Use when high performance is really impotant
+// Use to remove duplicates from arrays
+
+//? Key Value Pairs?
+//Allows us to describe the values
+//*Objects or Maps
+
+//? Objects
+// More 'traditional' key/value store
+//Easier to write and access wvalues with "." or "[]"
+//Use when you need to include functions (methods)
+//Use when working with JSON (can conver to map)
+
+//? Maps
+//Better performance
+//Keys can have any data type
+//Easy to iterate
+//Easy to computer size
+//Use when you simply need to map key to values
+//Use when you need keys that are not strings
+
+//Challenge #3
+//1. Create an array of different game events (no duplicates) - set
+//2. After the game has finished, it was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+//3. Print the following string to the console: "An event happened, on average, every 9 minutes" (Kepp in mind that a game has 90 minutes);
+//4. Loop over the events and log them to the console, marking whether it's in the first half or second half ()
+
+//number = minutes
+//value = the event
+// const gameEvents = new Map([
+//   [17, "⚽ GOAL"],
+//   [36, "🔀 Substitution"],
+//   [47, "⚽ GOAL"],
+//   [61, "🔀 Substitution"],
+//   [64, "🟨 Yellow Card"],
+//   [69, "🟥 Red Card"],
+//   [70, "🔀 Substitution"],
+//   [72, "🔀 Substitution"],
+//   [76, "⚽ GOAL"],
+//   [80, "⚽ GOAL"],
+//   [92, "🟨 Yellow Card"],
+// ]);
+
+// //1
+// const gameEventSet = new Set(gameEvents.values());
+// console.log(gameEvents.values());
+// console.log(gameEventSet);
+
+// //2
+// gameEvents.delete(64);
+// console.log(gameEvents);
+
+//3
+//"An event happened, on average, every 9 minutes"
+// console.log("An event happened, on average, every 9 minutes!");
+// for (const [key, value] of gameEvents) {
+//   key % 9 === 0 ? console.log(`Time: ${key} / Event: ${value}`) : 0;
+// }
+
+// console.log(
+//   `An event happened, on average, every ${(92 / gameEvents.size).toFixed(0)} minutes`,
+// );
+
+//4
+// console.log("------------------------------------------------------");
+// for (const [key, value] of gameEvents) {
+//   key < 45
+//     ? console.log(`[First Half] : ${value}`)
+//     : console.log(`[Second Half] : ${value}`);
+// }
+
+//1. Create a set to remove duplicates and then convert it back into an array
+// const guestList = ["Alice", "Bob", "Alice", "Charlie", "Bob"];
+
+// const newArr = [...new Set(guestList)];
+// console.log(newArr);
+
+//The Phone Book
+//2. Create a map called 'phonebook'
+
+// const phonebook = new Map();
+
+// phonebook.set("Leo", "5550101").set("Sarah", "5550202");
+// console.log(phonebook.has("Leo"));
+// console.log(phonebook.size);
+
+//3. The Chracter Counter
+//Write a function that takes a string, returns a map, where the key is the character and the value is how many times it appears
+
+// const characterCount = (str) => {
+//   const stringCount = new Map();
+//   for (const letter of str) {
+//     stringCount.has(letter)
+//       ? stringCount.get(letter).val++
+//       : stringCount.set(letter, { val: 1 });
+//   }
+//   return stringCount;
+// };
+
+// console.table(characterCount("jenniferlopez"));
+
+//4. Filtering Common Interests
+// const setA = new Set(["coding", "hiking", "gaming"]);
+// const setB = new Set(["hiking", "reading", "painting"]);
+
+// const setC = [...setA.intersection(setB)];
+// console.log(setC);
+
+//5.
+//Create three seperate objects
+
+// const user1 = { name: "Chris" };
+// const user2 = { name: "Will" };
+// const user3 = { name: "TakeItEasyYeh" };
+
+// const userLogins = new Map([
+//   [user1, "01222025"],
+//   [user2, "05262023"],
+//   [user3, "03151997"],
+// ]);
+
+// console.log(userLogins.get(user1));
+
+//6. Tracking Recent Visits
+
+//Create set
+
+// const recentlyViewedPrducts = new Set();
+
+// const viewedItem = (item) => {
+//   if (recentlyViewedPrducts.has(item)) {
+//     recentlyViewedPrducts.delete(item);
+//     recentlyViewedPrducts.add(item);
+//   } else {
+//     recentlyViewedPrducts.add(item);
+//   }
+// };
+// viewedItem("ID_101");
+// viewedItem("ID_102");
+// viewedItem("ID_101");
+
+// console.log(recentlyViewedPrducts);
+
+// function memoize(fn) {
+//   //it should return a function
+//   //the function uses a map to store results
+//   //the key should be the arguments passed to the function
+//   return function () {
+//     const results = new Map();
+//   };
+// }
+
+//*Strings
+
+const airline = "HOBYY Houston";
+// console.log(airline[6]);
+// console.log(airline.length);
+
+//*String.indexOf() gives the position of the element in a string
+// console.log(airline.indexOf("r")); //-1 does not exist
+// console.log(airline.indexOf("o")); //gives the first occurence of - 7
+
+//*String.lastIndexOf() gives the last position of that element in a string
+// console.log(airline.lastIndexOf("o")); //11
+
+//*String.indexOf() can also be used for searching words (case sensitive)
+// console.log(airline.indexOf("Houston")); //Gives the starting index of the word
+
+//*String.slice() can be used to 'slice' a string at certain points
+
+//*This is also called a substring
+// console.log(airline.slice(6)); //starts at index 6 + the rest of the string
+//*String.slice(<beginning (inclusive)>,<ending (exclusive)>)
+// console.log(airline.slice(3, 7));
+
+//!You cannot mutate strings...these return new strings
+
+// console.log(new String("Chris")); //object
+
+const practiceString = "string";
+//*String.toLowerCase() -- changes a string to all lowercase
+// console.log(practiceString.toLowerCase());
+//*String.toUpperCase() -- changes string to all uppercase
+// console.log(practiceString.toUpperCase());
+
+//Fix Capitalization Issues
+const passenger = "cHrIS";
+
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+
+// console.log(passengerCorrect);
+
+//*String.trim() -- removes white space from a string
+
+const email = "   DABABY@DABABY.ORG   ";
+// console.log(email.toLowerCase().trim());
+
+//replacing parts of strings
+//*String.replace(<word to replace>, <word to replace with>) -- replaces the first occurence of the word in a string
+//*String.replaceAll(<word to replace>, <word to replace with>) -- replaces all occurrence of that word in a sting
+
+const message =
+  "Please come to boarding door 3. Please come to boarding door 3 for flight 95!";
+console.log(message.replace("door", "gate"));
+// console.log(message.replace("door", "gate"));
+
+//*The replace method can use Regular Expressions 💩
+// !replace is case sensitive
+
+console.log(message.replace(/door/g, "gate")); //replaces all 'door'(/g - means global);
+
+//Booleans
+const plane = "f16 thunderhawk";
+// console.log(plane.includes("hawk")); //true
+// console.log(plane.startsWith("f")); //true
+// console.log(plane.startsWith("f16")); //true
+// console.log(plane.startsWith("c130")); //false
+// console.log(plane.endsWith("bubbles")); //false
+// console.log(plane.endsWith("k")); //true
+// console.log(plane.endsWith("a")); //false
+
+//*

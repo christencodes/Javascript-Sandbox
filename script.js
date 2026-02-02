@@ -2825,8 +2825,8 @@ const practiceString = "string";
 const passenger = "cHrIS";
 
 const passengerLower = passenger.toLowerCase();
-const passengerCorrect =
-  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+
+// passengerLower[0].toUpperCase() + passengerLower.slice(1);
 
 // console.log(passengerCorrect);
 
@@ -2841,13 +2841,13 @@ const email = "   DABABY@DABABY.ORG   ";
 
 const message =
   "Please come to boarding door 3. Please come to boarding door 3 for flight 95!";
-console.log(message.replace("door", "gate"));
+// console.log(message.replace("door", "gate"));
 // console.log(message.replace("door", "gate"));
 
 //*The replace method can use Regular Expressions 💩
 // !replace is case sensitive
 
-console.log(message.replace(/door/g, "gate")); //replaces all 'door'(/g - means global);
+// console.log(message.replace(/door/g, "gate")); //replaces all 'door'(/g - means global);
 
 //Booleans
 const plane = "f16 thunderhawk";
@@ -2859,4 +2859,517 @@ const plane = "f16 thunderhawk";
 // console.log(plane.endsWith("k")); //true
 // console.log(plane.endsWith("a")); //false
 
-//*
+//*String.split(<divider string>) - splits a string at every point of the <divider string>
+
+const message2 = "I like cheese pizza";
+// console.log(message2);
+
+// console.log(message2.split(" ")); //splits it into an array //this allows chaining
+
+//*We can use destructuring
+const [firstWord, secondWord, ...otherWords] = message2.split(" ");
+// console.log(firstWord);
+// console.log(secondWord);
+// console.log(...otherWords);
+
+const name3 = "Christen+Codes";
+const [firstName, lastName] = [...name3.split("+")];
+// console.log(firstName);
+// console.log(lastName);
+
+//* Array.join(<insert seperator>) - combines array elements in a string with the <seperator> between them;
+const newGreeting = ["Mr.", firstName, lastName].join(" ");
+// console.log(newGreeting);
+
+//? Capitalize names in full names
+const longName = "jennifer ashley elize ortiz";
+
+const capitalizeName = (name) => {
+  const splitName = name.split(" ");
+  const newName = [];
+  for (const names of splitName) {
+    // newName.push(names[0].toUpperCase() + names.slice(1));
+    //!Alternative
+    newName.push(names.replace(names[0], names[0].toUpperCase()));
+  }
+  console.log(newName.join(" "));
+};
+
+// capitalizeName("joseph perez jesus misael");
+
+//*Padding a String
+//*String.padStart(<the length of the new string>,<character added to achieve length>) -- adds characters to the beginning of a string
+
+const message4 = "I like cheesecake!";
+
+// console.log(message4.padStart(25, "/")); //makes the string 25 characters long by inserting '/' at the beginning
+
+//*String.padEnd(<the length of the new string>,<character added to achieve length>) -- adds characters to the end of a string
+
+const message5 = "I like gumbo! ";
+// console.log(message5.padEnd(25, "!"));
+
+//*String.repeat(<number of reps>) - repeats a string a number of times
+// console.log(message5.repeat(5));
+
+//! Functions Revisited -----------------------------------------------------------------------------
+
+//? Default Parameters
+const bookings = [];
+
+//there's multiple ways to implement default parameters but the ES6 way is below
+//! you can place an expression after the default assignment
+//! we cannot skip parameters
+//! Skip parameter by using 'undefined'
+const createBooking = function (
+  flightNum,
+  numPassengers = 1,
+  price = 199 * numPassengers,
+) {
+  const booking = {
+    flightNum,
+    numPassengers,
+    price,
+  };
+
+  console.log(booking);
+  bookings.push(booking);
+};
+
+// createBooking("HOB123", 10);
+// createBooking("DFW143", undefined, 1320);
+
+//? How Passing Arguments Works: Values vs. Reference
+//!Objects - Reference
+//!Primitives - Values
+//*Passing a primitive type to a function is like making a copy
+//*Passing an object is like passing a reference of that object in memory even if placed in another variable
+
+const testObj = {
+  moon: "full",
+  name: "Luna",
+};
+
+//! Objects all point to the same place in memory. Updating one updates them all
+// const lunar = testObj; //reference
+// testObj.name = "Moonie"; // Points to reference
+// console.log(lunar); //sabrina
+// lunar.name = "Sabrina"; // Points to reference
+// console.log(testObj); //sabrina
+// console.log(lunar);
+
+//!Primitives
+//!Prims are copies not references. They are values
+
+let planet = "earth";
+let terra = planet;
+
+planet = "sharks"; //Changing planet to sharks
+// console.log(terra); //earth
+// console.log(planet); //sharks - changing planet to sharks does not affect terra
+
+//? Passing by Value - Javascript
+//* Passing y Reference - C++
+
+//* First Class vs. Higher-Order Functions
+
+//? First Class
+//* javascript Treats functions as first-class citizens
+//* This means that functins are simply values
+//* Functions are just another 'type' of object
+//! Allows
+//*Storing functions in variables or properties
+//const add = (a,b) => a + b;
+//*Pass functions as arguments to OTHER functions
+// btn.addEventListener('click', add){//do something};
+//* Can return functions from functions (explained later)
+//!Functions are objects
+//!There are function methods
+//function.bind();
+
+//? Higher-Order Functions
+//* A functon that receives another function as an argument, that returns a new function, or both
+//* This is only possible because of first-class functions
+
+//function that receives another function
+//! The functioned passed as a parameter is called the callback function
+
+// const add = (a, b) => a + b;
+// document.addEventListener("click", add);
+
+//functions that return functions
+
+//*Functions accepting callback functions
+//JS uses callbacks all the time
+//It allows code to be used and more interconnected
+//Callback functions allow us to create abstraction
+//Abstraction - we hide the detail of some code implementation
+
+const addition = (a, b) => a + b;
+const subtraction = (a, b) => a - b;
+
+const math = function (number, number2, fn, fn2) {
+  //fn will be the callback function
+  console.log(`The original numbers are ${number} and ${number2}`);
+  console.log(
+    `We applied the ${fn.name} function and the result is: ${fn(number, number2)} `,
+  );
+  console.log(
+    `We applied the ${fn2.name} function and the result is: ${fn2(number, number2)}`,
+  );
+};
+
+// math(4, 2, addition, subtraction);
+
+//* Functions returning functions
+
+// const greet = (greeting) => {
+//   return function (name) {
+//     console.log(`${greeting} , ${name}`);
+//   };
+// };
+
+// const greet = (greeting) => (name) => console.log(`${greeting}, ${name}`);
+
+//greet returns a function
+
+// console.log(greet("hey")); //this is a function
+// const greetPerson = greet("Hi");
+// greetPerson("Suzy");
+
+// greet("Salutations")("Homie");
+
+//*The Call and Apply methods
+
+//Exercise 1
+//? The Personal Greeter
+
+// const createGreeter = (greeting) => (name) =>
+//   console.log(`${greeting}, ${name}`);
+
+// createGreeter("Hola")("Hombre");
+// createGreeter("Salutations")("Friend");
+
+// const greetingSpanish = createGreeter("Hola");
+// greetingSpanish("Eliza");
+
+//Exercise 2
+//? The Math Multiplier
+
+// const multiplyBy = (x) => (y) => x * y;
+
+// console.log(multiplyBy(6)(7));
+
+// const doubleThis = multiplyBy(2);
+
+// console.log(doubleThis(5));
+
+//Exercise 3
+//? The Secret Vault (Hard)
+
+// const createVault = (secretCode) => {
+//   return {
+//     checkCode(attempt) {
+//       attempt === secretCode ? true : false;
+//     },
+//     updateCode(oldCode, newCode) {
+//       oldCode === secretCode
+//         ? secretCode === newCode
+//         : console.log(`Try again`);
+//     },
+//   };
+// };
+
+//Exercise 4
+//?Function Composition (expert)
+// const timesTwo = (a) => a * 2;
+// const timesThree = (a) => a * 3;
+// const squared = (a) => a * a;
+
+// const pipe = (f, g) => (x) => g(f(x));
+
+// const timesTwoTimesThree = pipe(timesTwo, timesThree);
+// console.log(timesTwoTimesThree(2));
+
+//! Valid Pawn Moves
+
+// function producePawnMoves(pawn) {
+//   if (Number(pawn[1]) === 2) {
+//     return [pawn[0] + 3, pawn[0] + 4];
+//   } else {
+//     return [pawn[0] + (Number(pawn[1]) + 1)];
+//   }
+// }
+
+// console.log(producePawnMoves("D3"));
+
+//?Letters NUmbers
+
+// const votes = ["Yes", "No", "Yes", "Yes", "No", "Maybe"];
+
+// const tallyVotes = votes.reduce((obj, current) => {
+//   obj[current] ??= 0;
+//   obj[current]++;
+//   //!passes the baton! (think of it that way!);
+//   return obj;
+// }, {});
+
+// console.log(tallyVotes);
+
+// const seperateLettersAndNumbers = (str) => {
+//   const arr = [...str].map((e) => {
+//     if (e === "0") {
+//       return Number(e);
+//     }
+//     if (!Number(e)) {
+//       return e;
+//     }
+//     return Number(e);
+//   });
+
+//   arr.push("x");
+//   console.log(arr);
+//   const hypened = [];
+//   arr.reduce((first, second) => {
+//     if (typeof first == typeof second) {
+//       hypened.push(first);
+//       return second;
+//     } else {
+//       hypened.push(first);
+//       hypened.push("-");
+//       return second;
+//     }
+//     return second;
+//   });
+
+//   hypened[hypened.length - 1] === "-" ? hypened.pop() : 0;
+//   return hypened.join("");
+// };
+
+// console.log(seperateLettersAndNumbers("H3LL0W0RLD").join(""));
+// console.log(seperateLettersAndNumbers("a1b2c3d4").join(""));
+// console.log(seperateLettersAndNumbers("Route66").join(""));
+
+// function add(n) {
+//   return function (x) {
+//     return n + x;
+//   };
+// }
+
+// const addOne = add(1);
+
+// console.log(addOne(3));
+// const phoneNumber = [1, 1, 1, 2, 2, 2, 3, 3, 3, 3]; //(111) 222-2222
+
+// function createPhoneNumber(numbers) {
+//   const first = numbers.join("").slice(0, 3);
+//   const second = numbers.join("").slice(3, 6);
+//   const third = numbers.join("").slice(6);
+
+//   return ["(", ...first, ")", " ", ...second, "-", ...third].join("");
+// }
+
+// console.log(createPhoneNumber(phoneNumber).join(""));
+
+// const costArr = [10, 3, 1, 1];
+//1 10 3 [1,1]
+//2 10 [3,1] 1 // first - second - third
+//3 [10,3] 1 1// first third[0] third[1]
+// const minimumCost = function (nums) {
+//   const [first, second, ...third] = nums;
+
+//   if (nums.length === 4) {
+//     const variation1 = first + second + third[0];
+//     const variation3 = first + third[0] + third[1];
+//     return Math.min(variation1, variation3);
+//   }
+
+//   return first + second + third[0];
+// };
+
+// console.log(minimumCost(costArr));
+
+// function highAndLow(numbers) {
+//   const numbersArr = [...numbers.replaceAll(" ", ",").split(",")];
+//   console.log(numbersArr);
+
+//   const newArr = [];
+//   let indexer;
+//   numbersArr.forEach((element, index) => {
+//     if (element === "-") {
+//       newArr.push(numbersArr[index + 1] * -1);
+//       indexer = numbersArr[index + 1];
+//     } else {
+//       newArr.push(element);
+//     }
+//   });
+
+//   const container = newArr.filter((i) => i !== indexer).map((e) => Number(e));
+//   console.log(container);
+
+//   const min = Math.min(...container);
+//   const max = Math.max(...container);
+//   return `${max} ${min}`;
+// }
+
+// console.log(highAndLow("8 3 -5 42 -1 0 0 -9 4 7 4 -4"));
+
+//*Call and Apply Method
+//? The call method of FUNCTION INSTANCES (functions are objects too) calls this function with a given 'this' value and arguments provided individualy.
+
+//? The Apply method of FUNCTION INSTANCES is similar to the call method, but it takes an array of arguments instead
+
+//?Could I make an object of functions and then use call to compartmentalize the functions?
+
+// const Hobby = {
+//   airline: "George Bush International",
+//   iataCode: "HOB",
+//   bookings: [],
+//   book(flightNum, name) {
+//     console.log(`${name} booked a seat on ${this.airline} flight ${flightNum}`);
+//     this.bookings.push({ flightNum, name });
+//   },
+// };
+
+// const Delta = {
+//   airline: "Delta",
+//   iataCode: "DEL",
+//   bookings: [],
+// };
+
+// const Atlanta = {
+//   airline: "Atlanta International",
+//   iataCode: "ATL",
+//   bookings: [],
+// };
+
+// Hobby.book("123", "Chris");
+// Hobby.book("456", "Angela");
+// // console.log(Hobby);
+
+//*Lets create a new variable that contains the function book from Hobby so that we can use it again
+
+// const book = Hobby.book;
+// console.log(book); //contains the function
+
+//* Lets try to use the function
+
+//! does not work
+// book("231", "Christencodes");
+//This is merely a copy of that function; The this keyword does not work in a simple function call like this. Essentially it's just the code and has no reference to the object/object function itself. It's simply a value (maybe?).
+
+// const testArgs = ["246", "Jacob"];
+// const testArgs2 = ["810", "Jakob"];
+// //*Use the call method on the function instance
+// // book.call(Delta, "123", "Henry");
+// //*You can destructure an array in the call method
+// book.call(Delta, ...testArgs);
+// // console.log(Delta);
+
+//*Using the apply method we insert an array
+//! Apply isn't used as much because we can destructure arrays in the call function
+// book.apply(Delta, testArgs2);
+// book.apply(Delta, ["539", "Clarissa"]);
+// console.log(Delta);
+
+//* Bind Method
+//? The bind() method of FUNCTION INSTANCES (functions are objects, too) creates a new function that, when called, calls this function with its this keyword set to the provided values, and a given sequence of arguments preceding any provided when the new function is called.
+
+//? Function.bind(<insert object here>) is essentially the sticker version of call. It does not immediately call the function.
+
+//*We're going to use the book function from this object alot multiple times
+// const Lucky = {
+//   airline: "Lucky International",
+//   iataCode: "LUK",
+//   bookings: [],
+//   book(flightNum, name) {
+//     console.log(`${name} booked a seat on ${this.airline} flight ${flightNum}`);
+//     this.bookings.push({ flightNum, name });
+//   },
+// };
+
+// const Dexterity = {
+//   airline: "Dexterity Airways",
+//   iataCode: "Dex",
+//   bookings: [],
+// };
+
+//*In action
+
+//take the method from Lucky and bind it's this keyword to dexterity. Place it in the const bookWithDex
+// const bookWithDex = Lucky.book.bind(Dexterity);
+// const bookWithATL = Lucky.book.bind(Atlanta);
+// const bookWithDel = Lucky.book.bind(Delta);
+//Unlike call/apply we can now use the method to call the book function
+//The this has already been set to Dexterity =)
+// bookWithDex("9890", "Casey");
+// bookWithDex("9055", "Cassidy");
+// bookWithDex("6539", "Michael");
+// bookWithATL("543", "Jason");
+// bookWithATL("967", "Emelia");
+// bookWithATL("6543", "Jay");
+// bookWithDel("78965", "Bobby");
+// bookWithDel("7865", "Anthony");
+// bookWithDel("786", "Billy");
+// console.log("-----------------------------------------------");
+// console.log(Dexterity);
+// console.log(Atlanta);
+// console.log(Delta);
+
+//*Partial Application - using bind to have preset parameters - common pattern in JS
+//! come back to this 07:06
+
+//*Lets try using an event listener -
+//!This is important
+
+// Dexterity.planes = 100;
+// Dexterity.buyPlane = function () {
+//   this.planes++;
+//   console.log(`Dexterity Planes : ${this.planes}`);
+// };
+
+//lets use bind to increment the plane
+//lets try with the Dexterity.buyPlane() method
+//! The buy plane does not work because in the High Order Function - addeventlistener - it points at the target element which is the button in this case. This would be the button. We need to use bind to make this function point to dexterity
+//*Bind is used in this case because we do not immediately need to call the function buyPlane();
+//* If we need to immediately call it we would use call() or apply()
+
+// document
+//   .querySelector(".buy-plane")
+//   .addEventListener("click", Dexterity.buyPlane.bind(Dexterity));
+
+// //* Partial Application  means that we can preset perameters
+// const newTax = (tax, cost) => (cost * tax + cost).toFixed(2);
+
+// //* With partial application we can preset the parameters of newTax
+// const portugalTax = newTax.bind(null, 0.1);
+// // console.log(portugalTax(50));
+
+// //*Jonas's challenge
+// const addTax = (tax) => (cost) => (cost * tax + cost).toFixed(2);
+// const addTaxTexas = addTax(0.0825);
+
+// console.log(addTaxTexas(50));
+
+const poll = {
+  question: "What is your favorite programming language? ",
+  options: ["0: Javascript", "1: Python", "2: Rust", "3: C++"],
+  //this creates an array with 4 elements and fills each element with the number 0
+  answers: new Array(4).fill(0),
+};
+
+//1. Create method registerNewAnswer ' on the poll object -
+//a creates prompt
+//b takes input from the user
+
+poll.registerNewAnswer = function () {
+  const answer = prompt(`${this.question}\n${this.options.join("\n")}`);
+
+  this.answers[answer - 1]++;
+
+  console.log(this.answers);
+};
+
+document
+  .querySelector(".answer-poll")
+  .addEventListener("click", poll.registerNewAnswer.bind(poll));

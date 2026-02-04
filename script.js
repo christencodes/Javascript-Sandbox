@@ -3351,25 +3351,311 @@ const math = function (number, number2, fn, fn2) {
 
 // console.log(addTaxTexas(50));
 
-const poll = {
-  question: "What is your favorite programming language? ",
-  options: ["0: Javascript", "1: Python", "2: Rust", "3: C++"],
-  //this creates an array with 4 elements and fills each element with the number 0
-  answers: new Array(4).fill(0),
-};
+// const poll = {
+//   question: "What is your favorite programming language? ",
+//   options: ["0: Javascript", "1: Python", "2: Rust", "3: C++"],
+//   //this creates an array with 4 elements and fills each element with the number 0
+//   answers: new Array(4).fill(0),
+// };
 
 //1. Create method registerNewAnswer ' on the poll object -
 //a creates prompt
 //b takes input from the user
 
-poll.registerNewAnswer = function () {
-  const answer = prompt(`${this.question}\n${this.options.join("\n")}`);
+// poll.registerNewAnswer = function () {
+//   const answer = prompt(`${this.question}\n${this.options.join("\n")}`);
 
-  this.answers[answer - 1]++;
+//   this.answers[answer - 1]++;
 
-  console.log(this.answers);
-};
+//   console.log(this.answers);
+// };
 
-document
-  .querySelector(".answer-poll")
-  .addEventListener("click", poll.registerNewAnswer.bind(poll));
+// document
+//   .querySelector(".answer-poll")
+//   .addEventListener("click", poll.registerNewAnswer.bind(poll));
+
+//* Context Switch
+// //1.
+// const person = { name: "Alex" };
+
+// //2
+// const greet = function () {
+//   console.log("Hello, my name is " + this.name);
+// };
+
+// //3
+// greet.call(person);
+
+//*The Math teacher
+
+// //1. & //2.
+// const calculateTotal = function (tax, shipping) {
+//   console.log(this.price + tax + shipping);
+// };
+
+// //3.
+// const item3 = { price: 100 };
+// const taxShipping = [1, 3];
+// //4
+
+// calculateTotal.call(item3, ...taxShipping);
+// calculateTotal.apply(item3, [1, 10]);
+
+//*Method Borrowing
+// //1.
+// const car = {
+//   description() {
+//     console.log(`This is a ${this.year} ${this.model}`);
+//   },
+// };
+
+// //2.
+// const phone = { year: 2024, model: "iPhone 15" };
+
+// //3.
+// car.description.call(phone);
+
+//* The Array Wrapper
+
+// //1
+// const numberz = [5, 6, 2, 3, 7];
+
+// //2 //3
+
+// console.log(Math.max.apply(null, numberz));
+
+//*Level 1 - identity Fixer
+
+//1.
+
+// const pet = {
+//   type: "dog",
+//   speak() {
+//     console.log("The " + this.type + " barks!");
+//   },
+// };
+
+// //2.
+// const dogSpeak = pet.speak;
+
+// // dogSpeak();
+
+// const fixedSpeak = pet.speak.bind(pet);
+// fixedSpeak();
+
+//*2 Time traveler
+
+//1
+// const bomb = { timeLeft: 3 };
+
+// //2
+// bomb.Explode = function () {
+//   console.log(this.timeLeft + "...BOOM!");
+// };
+
+// //3
+
+// setTimeout(bomb.Explode.bind(bomb), 2000); //must point to the window or some other target
+
+//*3 'Function Currying" (Argument Pre-Setting)
+
+// //1
+// function makeWeatherMessage(city, temp) {
+//   console.log(`The temperature in ${city} is ${temp} degrees.`);
+// }
+
+// //2
+// const londonWeather = makeWeatherMessage.bind(null, "London");
+
+// //3
+// londonWeather(20);
+
+// //*4 The "UI Event Mimic"
+
+// //1
+// const counter = { count: 0 };
+// //2
+// counter.increment = function () {
+//   this.count++;
+//   console.log(this.count);
+// };
+
+// const btn = document.querySelector(".incrementer");
+
+// btn.addEventListener("click", counter.increment.bind(counter));
+// //3
+
+//* IIFE ( Immediately Invoked Function Expressions)
+// ((coder) => {
+//   console.log("This will be called immediately and never run again!");
+// })();
+
+//* The Goal: Prevent variable pollution
+// //1
+
+// //2
+// (() => {
+//   const secret = "I'm a ghost";
+//   console.log("IIFE is running!");
+// })();
+
+// console.log(secret);
+
+// ((name = "Admin", year = "2026") => {
+//   console.log(`System initialized for ${name} in ${year}`);
+// })();
+
+//3
+// //* The Private Counter (The Module Pattern)
+// (function () {
+//   let count = 0;
+//   const counter = {
+//     increment() {
+//       count++;
+//       console.log(`The count is ${count}`);
+//     },
+//     getCount() {
+//       return count;
+//     },
+//   };
+//   return counter;
+// })();
+
+// counter.increment();
+
+//4
+// //* The Dependency Injection Mimic
+
+// const LibraryConfig = { theme: "dark" };
+
+// // !function (cfg = LibraryConfig) {
+//   if (cfg.theme === "dark") {
+//     console.log("Setting UI to Night Mode");
+//   }
+// };
+
+// const tvShows = ["Flintstones", "Scoobie Doo", "Dexter", "PowerPuff Girls"];
+// tvShows.forEach((show) => console.log(show));
+
+// for (const shows of tvShows) {
+//   console.log(shows);
+// }
+// const arrNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// const evenNumbers = arrNumbers.filter((number) => number % 2 === 0);
+// console.log(evenNumbers);
+
+// const sumMinMax = (arr) => {
+//   let min = Math.min(...arr);
+//   let max = Math.max(...arr);
+
+//   return min + max;
+// };
+
+// const sumMinMax = (arr) => Math.min(...arr) + Math.max(...arr);
+
+// console.log(sumMinMax(arrNumbers));
+
+// // const sum = (x) => (y) => x + y;
+
+// const sumSecondAndHigh = function (arr) {
+//   const ascending = arr.sort(a, (b) => a - b);
+//   const descending = arr.sort(a, (b) => b - a);
+
+//   return ascending[1] + descending[1];
+// };
+
+// const stopWatch = {
+//   color: "black",
+//   seconds: 0,
+//   minutes: 0,
+//   brand: "Super Cool",
+//   stop() {
+//     console.log("watch stopped");
+//   },
+//   start() {
+//     console.log("watch started");
+//   },
+//   paused() {
+//     console.log("watch paused");
+//   },
+// };
+
+//* Closures - happen automatically in certain situations V
+//? The closure makes a function remember all variables at the location of it's birth?
+//* A function has access to the variable environment (VE) of the execution context in which it was created
+//? A closure is the closed-over variable environment of the execution context in which a function was created, even after that execution context is gone;
+//* A closure gives a function access to all the variables of its parent function, even after that parent function has returned. The function keeps a reference to its outer scope, which preserves the scope chain throughout time.
+//* A closure makes sure that function doesn't loose connection to variables that existed at the function's birth place;
+
+//? A closure is like a 🎒 that a function carries around wherever it goes. This backpack has all the variables that were present in the environemnt where the function was created.
+//! We do not have to manually create closures, this is a JS feature that happens automatically. We can't even access closed-over variables explicitly. A closure is NOT a tangible JavaScript object...
+//Closures are an 'idea'
+
+// //global scope
+// const secureBooking = function () {
+//   //local to this function
+//*can't be explicitly accessed
+
+//   let passengerCount = 0;
+//   return function () {
+//     passengerCount++;
+//     console.log(`${passengerCount} passengers`);
+//   };
+// };
+
+// //global scope
+// const booker = secureBooking();
+// // //*we can only observe
+// // booker();
+// // booker();
+// // booker();
+
+// // console.dir(booker);
+
+// (function () {
+//   const btn = document.querySelector(".incrementer");
+//   btn.style.color = "red";
+
+//   document.body.addEventListener("click", () => {
+//     btn.style.color = "blue";
+//   });
+// })();
+
+//*Chapter 11 Arrays
+
+//* Array.slice()
+//* Slice method allows us to extract any element in the array without editing the original array
+
+const testArr = [0, 1, 2, 3, 4, 5];
+
+// console.log(testArr.slice(2)); // [2,3,4,5] -> starts at position 2
+// console.log(testArr.slice(2, 4)); //[2,3] -> slice(inclusive,exclusive) - starts at position 2 ; ends at 4
+// console.log(testArr.slice(1, -1)); //[1,2,3,4]
+
+//*We can use the slice method to create a shallow copy of an array
+// console.log(testArr.slice()); //Returns the entire Array
+
+//* Array.splice()
+//* Works similarly to slice() but changes the original array
+// console.log(testArr.splice(2)); //[2,3,4,5] - removes this from the array
+// console.log(testArr); //[0,1] the arr is left with this
+
+//* You can remove the last element from an Array with Array.splice(-1);
+// testArr.splice(-1); //removes the last element - 5
+// console.log(testArr); // [0,1,2,3,4];
+
+//* A section of an array can be removed by adding a second argument
+// testArr.splice(1, 2); //Starts at position 1 and removes 2 elements
+// console.log(testArr); //[0,3,4,5] // 1 and 2 are removed
+
+//* Array.reverse() reverses the array - mutates the array
+
+// console.log(testArr.reverse());
+// console.log(testArr.reverse());
+
+//*Array.concat(<insert arr>); combines arrays - does not mutated
+const testArr2 = [6, 7, 8, 9];
+console.log(testArr.concat(testArr2)); //displays the combined arrays
+console.log(testArr); //does not mutate - the original array is unchanged
+//Alternative
+console.log([...testArr, ...testArr2]);

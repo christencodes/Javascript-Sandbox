@@ -3,19 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>⛹🏾SandBOX</title>
   </head>
-  <body>
-    <button class="incrementer">Increment</button>
+  <body
+    class="bg-black flex flex-col items-center justify-center border-2 h-screen gap-4"
+  >
+    <div class="flex flex-col gap-2 justify-around mb-2rem">
+      <input id="pokemon-name" type="text" placeholder="enter pokemon" />
+      <button id="submit" class="text-white border-2">Search Pokemon</button>
+    </div>
+    <div
+      id="pokemon-container"
+      class="flex flex-col items-center justify-center w-[320px] h-[288px] border-2"
+    >
+      <div class="top min-h-[50%] min-w-full grid grid-cols-[1fr,1fr]">
+        <div class="left flex flex-col justify-end items-center">
+          <img
+            id="pokemon-image"
+            src=""
+            alt=""
+            class="h-[70px] w-[70px] border-2"
+          />
+          <p id="poke-id" class="text-white">No. 001</p>
+        </div>
+        <div
+          class="right flex flex-col items-start justify-center text-white text-left gap-1.5"
+        >
+          <p id="poke-name" class="uppercase tracking-widest">BULBASAUR</p>
+          <h2 id="poke-type" class="uppercase tracking-widest">SEED</h2>
+          <h2 id="poke-height" class="uppercase tracking-widest">
+            HT <span id="height-value" class="ml-3">xx' xx</span>
+          </h2>
+          <h2 id="poke-weight" class="uppercase tracking-widest">
+            WT <span id="weight-value" class="ml-3">xx' xx</span>
+          </h2>
+        </div>
+      </div>
+      <div
+        class="bottom min-h-[50%] flex items-center justify-center min-w-full border-t-2 p-3"
+      >
+        <p id="poke-description" class="min-h-full min-w-full text-white"></p>
+      </div>
+    </div>
 
     <!-- Please remember this -->
-    <script src="script.js"></script>
+    <script src="practice.js"></script>
   </body>
 </html>

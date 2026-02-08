@@ -3654,8 +3654,281 @@ const testArr = [0, 1, 2, 3, 4, 5];
 // console.log(testArr.reverse());
 
 //*Array.concat(<insert arr>); combines arrays - does not mutated
-const testArr2 = [6, 7, 8, 9];
-console.log(testArr.concat(testArr2)); //displays the combined arrays
-console.log(testArr); //does not mutate - the original array is unchanged
-//Alternative
-console.log([...testArr, ...testArr2]);
+// const testArr2 = [6, 7, 8, 9];
+// console.log(testArr.concat(testArr2)); //displays the combined arrays
+// console.log(testArr); //does not mutate - the original array is unchanged
+// //Alternative
+// console.log([...testArr, ...testArr2]);
+
+//* Array.join(<insert separator>) - joins array methods into a string with the provided separator between
+
+// console.log([...testArr, ...testArr2].join("-"));
+
+//* Array 'at' method
+//? Array.at(<insert position>); - this will return the element at the given index. The same as bracket notation
+
+// const digits = [11, 22, 33];
+// console.log(digits[0]); //11
+// console.log(digits.at(0)); //11 <---- more modern
+
+// //*Gives us an easier way to find the last element if length is unknown
+// //older way
+// console.log(digits[digits.length - 1]); //33
+// //with .at()
+// console.log(digits.at(-1)); //33
+// //alternative using the slice method
+// console.log(...digits.slice(-1)); // 33
+
+// //Works on strings too
+// console.log("chris".at(-1));
+
+//* Array.forEach(element => clg(element));
+//*Method allows a function/action to be executed on each element
+//*Does not mutate the array
+//Positives are deposits
+//Negatives are withdrawals
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300, 0];
+
+// for (const move of movements) {
+//   if (move === 0)
+//     console.log("What da helly? What da hellionte? What da hellion?");
+//   Math.sign(move) === 1
+//     ? console.log(`${move} was deposited`)
+//     : console.log(`${move} was withdrawn`);
+// }
+
+//*Lets do it with the forEach method
+
+// movements.forEach((move, index) =>
+//   Math.sign(move) === 1
+//     ? console.log(`Movement ${index + 1}: $${move} was deposited`)
+//     : console.log(`Movement ${index + 1}: $${Math.abs(move)} was withdrawn`),
+// );
+
+//* The Clean Copy
+//Extract a portion of an array without destroying the original
+const ingredients = ["Flour", "Sugar", "Eggs", "Butter", "Milk"];
+const dryIngredients = ingredients.slice(1, 4);
+// console.log(dryIngredients);
+// console.log(ingredients);
+
+//* The Emergency Swap (Splice)
+const playlist = ["Song 1", "Song 2", "Bad Song", "Song 4"];
+// playlist.splice(playlist.indexOf("Bad Song"), 1, "Great Song");
+// console.log(playlist);
+
+//*The Negative Index Ninja
+const rankings = ["Alice", "Bob", "Charlie", "David", "Eve"];
+// console.log(rankings.slice(-2));
+// console.log(rankings.splice(-3, 1));
+
+//*The "Undo" Feature
+let inbox = ["Email A", "Email B", "Email C", "Email D"];
+const trash = inbox.splice(0, 2);
+// console.log(trash);
+// inbox.push(trash.at(0));
+// console.log(inbox);
+
+//maps - (value,key,map);
+//sets- (value, value2, set); //sets don't have keys
+
+//* The "Entry Filter" (Set)
+
+const noombers = new Set([10, 25, 30, 45, 50, 61]);
+const largeNoombers = [];
+
+noombers.forEach((number) => (number > 40 ? largeNoombers.push(number) : null));
+// console.log(largeNoombers);
+
+//* The Price Adjuster
+
+const inventory = new Map([
+  ["apples", 5],
+  ["bananas", 12],
+  ["oranges", 8],
+]);
+
+// inventory.forEach((amount, fruit) =>
+//   console.log(`We have ${amount} units of ${fruit}`),
+// );
+
+const restockedInventory = new Map();
+
+// inventory.forEach((amount, fruit) => restockedInventory.set(fruit, amount));
+// console.log(restockedInventory);
+
+//* The Context Binder
+
+const taxOffice = { percent: 0.5, calc(val) {} };
+const prices = new Set([100, 200, 300]);
+
+//? I'm assuming the thisArg allows the use of the this keyword with an object passed in that paremeter?
+
+//Don't use the arrow function - this becomes undefined
+// prices.forEach(function (price) {
+//   console.log(price * this.percent + price);
+// }, taxOffice);
+
+//* The Data Cleaner
+
+const userRoles = new Map([
+  ["Admin", ["Alice", "Bob"]],
+  ["Editor", ["Charlie", "Alice"]],
+]);
+
+// const uniqueStaff = new Set();
+
+// userRoles.forEach((val, key) => {
+//   uniqueStaff.add(...val);
+// });
+// console.log(uniqueStaff);
+
+// const numz = [null, {}, 3];
+
+// Array.prototype.last = function () {
+//   if (!this.length) return -1;
+//   //return the last element in the array
+//   return this.at(-1);
+// };
+
+// console.log([].last());
+
+// var createCounter = function (n) {
+//   const number = n;
+//   return function (arr) {
+//     const callArr = [];
+//     callArr.push(n);
+//     arr.reduce((acc, current) => {
+//       callArr.push(acc + 1);
+//       return acc + 1;
+//     }, n);
+
+//     return callArr;
+//   };
+// };
+
+// console.log(createCounter(-2)(["call", "call", "call", "call", "call"]));
+
+// var createCounter = function (n) {
+//   let number = n;
+//   return function () {
+//     if (number === n) {
+//       number++;
+//       return n;
+//     }
+//     return number++;
+//   };
+// };
+
+// const counter = createCounter(10);
+
+// console.log(counter());
+// console.log(counter());
+// console.log(counter());
+
+// async function sleep(millis) {
+//   const sleeper = new Promise.resolve(millis);
+// }
+
+//we are going to create a promise
+//the viewer promises to join the Discord
+
+// const discordPromise = new Promise((resolve, reject) => {
+//   //lets say they are telling the truth and they will join the discord
+//   const truthOrLie = true;
+
+//   truthOrLie
+//     ? resolve("Thanks for joining the discord 🙂")
+//     : reject("AWWW MAN! 😟");
+// });
+
+// //
+
+// discordPromise
+//   .then((value) => {
+//     console.log(value);
+//   })
+//   .catch((value) => {
+//     console.log(value);
+//   });
+
+//? Pizza Delivery Challenge
+
+// const pizzaOrder = new Promise((resolve, reject) => {
+//   let isDriverLost = false;
+//   if (!isDriverLost) {
+//     resolve("Pizza is at your door! 🍕");
+//   } else {
+//     reject("The driver eneded up in another city. 🚗");
+//   }
+// });
+
+// pizzaOrder
+//   .then((success) => {
+//     console.log(success);
+//   })
+//   .catch((failure) => {
+//     console.log(failure);
+//   });
+
+// const getMyDinner = async () => {
+//   try {
+//     const message = await pizzaOrder;
+//     console.log(message);
+//     console.log("It's time to eat!");
+//   } catch (error) {
+//     console.log("MAMA MIAAAA!!!!! 🍕");
+//     console.log(error);
+//   }
+// };
+
+// getMyDinner();
+
+// const muffinPromise = new Promise((resolve, reject) => {
+//   const isReady = true;
+
+//   isReady
+//     ? resolve("The muffins are ready!")
+//     : reject("The muffins are not done yet!");
+// });
+
+// const getMuffins = async () => {
+//   try {
+//     const muffinMessage = await muffinPromise;
+//     console.log(muffinMessage);
+//     console.log("YAAAAAAY! 🥞");
+//   } catch (error) {
+//     console.log("NOOOOOOO! 😟");
+//     console.log(error);
+//   }
+// };
+
+// getMuffins();
+
+// This is a fake function that simulates getting pizza from the internet
+// const fetchPizza = () =>
+//   new Promise((res) => setTimeout(() => res("🍕 Pizza"), 1000));
+
+// // This is a fake function that simulates getting soda from the internet
+// const fetchSoda = () =>
+//   new Promise((res) => setTimeout(() => res("🥤 Soda"), 500));
+
+// async function startParty() {
+//   try {
+//     console.log("Ordering food...");
+
+//     // 1. FILL IN: Await the pizza
+//     const pizza = await fetchPizza();
+//     console.log(`Got the ${pizza}!`);
+
+//     // 2. FILL IN: Await the soda
+//     const soda = await fetchSoda();
+//     console.log(`Got the ${soda}!`);
+
+//     console.log("PARTY TIME! 🎉");
+//   } catch (error) {
+//     console.log("Party cancelled: " + error);
+//   }
+// }
+
+// startParty();
